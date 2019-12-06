@@ -9,7 +9,7 @@ public class SpellComboManager : MonoBehaviour {
     public float ProjectileThrowDuration = 1f;
 
     public static bool SpellScanOnCooldown = false;
-    public float SpellScanCooldown = 4f;
+    public float SpellScanCooldown = 3f;
 
     [Header("Base Spells")]
     public SpellParticleSystem Fireball;
@@ -39,7 +39,9 @@ public class SpellComboManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         foreach (SpellParticleSystem spell in AllSpellSystems) {
-            spell.EnableSystems(false, false);
+            if (spell != null) {
+                spell.EnableSystems(false, false);
+            }
         }
 
         FireLightningTornado.OnEnabled = CompleteFinalSpell;
@@ -90,7 +92,7 @@ public class SpellComboManager : MonoBehaviour {
     }
 
     public void ToggleFireball() {
-        if (WaitForCooldown() || FinalComboSpellIsFormed())
+        if (Fireball.WaitForCooldown() || FinalComboSpellIsFormed())
             return;
 
         Fireball.transform.position = (ballsActive == 1 && !Fireball.SystemsAreEnabled ? PrimaryProjectilePosition + SecondaryProjectileOffset : PrimaryProjectilePosition);
@@ -100,7 +102,7 @@ public class SpellComboManager : MonoBehaviour {
     }
 
     public void ToggleLightningBall() {
-        if (WaitForCooldown() || FinalComboSpellIsFormed())
+        if (Lightningball.WaitForCooldown() || FinalComboSpellIsFormed())
             return;
 
         Lightningball.transform.position = (ballsActive == 1 && !Lightningball.SystemsAreEnabled ? PrimaryProjectilePosition + SecondaryProjectileOffset : PrimaryProjectilePosition);
@@ -109,7 +111,7 @@ public class SpellComboManager : MonoBehaviour {
     }
 
     public void ToggleTornado() {
-        if (WaitForCooldown() || FinalComboSpellIsFormed())
+        if (Tornado.WaitForCooldown() || FinalComboSpellIsFormed())
             return;
 
         Tornado.EnableSystems(!Tornado.SystemsAreEnabled);
@@ -118,21 +120,21 @@ public class SpellComboManager : MonoBehaviour {
 
 
     public void ToggleCyclone() {
-        if (WaitForCooldown() || FinalComboSpellIsFormed())
+        if (Cyclone.WaitForCooldown() || FinalComboSpellIsFormed())
             return;
 
         Cyclone.EnableSystems(!Cyclone.SystemsAreEnabled);
     }
 
     public void ToggleSnowstorm() {
-        if (WaitForCooldown() || FinalComboSpellIsFormed())
+        if (Snowstorm.WaitForCooldown() || FinalComboSpellIsFormed())
             return;
 
         Snowstorm.EnableSystems(!Snowstorm.SystemsAreEnabled);
     }
 
     public void ToggleConfetti() {
-        if (WaitForCooldown() || FinalComboSpellIsFormed())
+        if (Confetti.WaitForCooldown() || FinalComboSpellIsFormed())
             return;
 
         Confetti.EnableSystems(!Confetti.SystemsAreEnabled);
@@ -241,7 +243,7 @@ public class SpellComboManager : MonoBehaviour {
     }
 
 
-    bool WaitForCooldown() {
+    bool WaitForGlobalCooldown() {
         if (SpellScanOnCooldown) {
             return true;
         } else {

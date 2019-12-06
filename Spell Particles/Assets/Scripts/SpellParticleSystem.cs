@@ -19,6 +19,7 @@ public class SpellParticleSystem : MonoBehaviour {
     [Header("Settings")]
     public bool SystemsAreEnabled = true;
     public float AutoDisableTime = 0f;
+    public float SpellScanCooldown = 8f;
 
     [Header("Prefab Effects")]
     public GameObject[] BirthEffects;
@@ -26,6 +27,7 @@ public class SpellParticleSystem : MonoBehaviour {
 
     private bool _SystemsAreEnabled = true;
     internal bool canBeDisabled = true;
+    internal bool SpellScanOnCooldown = false;
 
 
     private void Awake() {
@@ -123,6 +125,24 @@ public class SpellParticleSystem : MonoBehaviour {
         }
     }
 
-    
+
+    public bool WaitForCooldown() {
+        if (SpellScanOnCooldown) {
+            return true;
+        } else {
+            StartCoroutine(SpellScanCooldownCoroutine());
+            return false;
+        }
+    }
+
+
+    IEnumerator SpellScanCooldownCoroutine() {
+        SpellScanOnCooldown = true;
+        yield return new WaitForSeconds(SpellScanCooldown);
+
+        SpellScanOnCooldown = false;
+    }
+
+
 
 }

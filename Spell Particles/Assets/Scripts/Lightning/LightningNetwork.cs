@@ -130,11 +130,7 @@ public class LightningNetwork : MonoBehaviour {
     }
 
     void UpdateOnlyIfPlaying() {
-        if (Input.GetKeyDown(TestKey)) {
-            ActivateCurrentLightning();
-
-
-        }
+        
     }
     #endregion
 
