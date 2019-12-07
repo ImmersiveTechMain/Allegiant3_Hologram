@@ -49,41 +49,41 @@ Cmd: preprocessCompute
 Cmd: preprocessCompute
   insize=1625 outsize=1627 ok=1
 Cmd: preprocessCompute
-  insize=9587 outsize=9589 ok=1
+  insize=10268 outsize=10270 ok=1
 Cmd: preprocessCompute
-  insize=12954 outsize=12956 ok=1
+  insize=13765 outsize=13767 ok=1
 Cmd: preprocess
-  insize=10228 outsize=429 ok=1
+  insize=10300 outsize=429 ok=1
 Cmd: preprocessCompute
-  insize=9864 outsize=9866 ok=1
+  insize=10664 outsize=10666 ok=1
 Cmd: preprocessCompute
-  insize=10681 outsize=10683 ok=1
+  insize=11249 outsize=11251 ok=1
 Cmd: preprocess
-  insize=10228 outsize=428 ok=1
+  insize=10300 outsize=428 ok=1
 Cmd: preprocess
-  insize=10226 outsize=429 ok=1
+  insize=10300 outsize=429 ok=1
 Cmd: preprocess
-  insize=10227 outsize=428 ok=1
+  insize=10300 outsize=428 ok=1
 Cmd: preprocess
-  insize=10225 outsize=429 ok=1
+  insize=10300 outsize=428 ok=1
 Cmd: preprocess
-  insize=10227 outsize=428 ok=1
+  insize=10300 outsize=428 ok=1
 Cmd: preprocessCompute
-  insize=9708 outsize=9710 ok=1
+  insize=10508 outsize=10510 ok=1
 Cmd: preprocessCompute
-  insize=8760 outsize=8762 ok=1
+  insize=9061 outsize=9063 ok=1
 Cmd: preprocessCompute
-  insize=9864 outsize=9866 ok=1
+  insize=10664 outsize=10666 ok=1
 Cmd: preprocessCompute
-  insize=10682 outsize=10684 ok=1
+  insize=11249 outsize=11251 ok=1
 Cmd: preprocessCompute
-  insize=9864 outsize=9866 ok=1
+  insize=10664 outsize=10666 ok=1
 Cmd: preprocessCompute
-  insize=10682 outsize=10684 ok=1
+  insize=11249 outsize=11251 ok=1
 Cmd: preprocessCompute
-  insize=9864 outsize=9866 ok=1
+  insize=10664 outsize=10666 ok=1
 Cmd: preprocessCompute
-  insize=10682 outsize=10684 ok=1
+  insize=11249 outsize=11251 ok=1
 Cmd: preprocessCompute
   insize=1625 outsize=1627 ok=1
 Cmd: preprocessCompute
@@ -96,6 +96,10 @@ Cmd: preprocessCompute
   insize=1625 outsize=1627 ok=1
 Cmd: preprocessCompute
   insize=1625 outsize=1627 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1072 outsize=2182 kw=UNITY_PASS_SHADOWCASTER SHADOWS_DEPTH PROCEDURAL_INSTANCING_ON pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1072 outsize=186 kw=UNITY_PASS_SHADOWCASTER SHADOWS_DEPTH PROCEDURAL_INSTANCING_ON pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
 Cmd: preprocessCompute
   insize=9587 outsize=9589 ok=1
 Cmd: preprocessCompute
