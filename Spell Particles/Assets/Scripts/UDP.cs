@@ -5,7 +5,8 @@ using System.Net.Sockets;
 using System.Net;
 using System.Threading;
 
-public class UDP : MonoBehaviour {
+public class UDP : MonoBehaviour
+{
     static Thread listeningThread;
     static bool InitializeOnce = true;
     public static int DefaultWritePort { private set; get; }
@@ -84,8 +85,6 @@ public class UDP : MonoBehaviour {
             return "Error at sending: ".ToUpper() + e.Message;
         }
     }
-
-
 
     public void Broadcast(string message, string hostName = null, int port = -1) {
         UdpClient sender = new UdpClient();

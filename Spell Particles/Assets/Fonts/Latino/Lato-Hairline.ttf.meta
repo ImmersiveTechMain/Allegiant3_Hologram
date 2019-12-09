@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 87a9737d3b0af2145bff989f63804e22
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Lato Hairline
+  fontNames:
+  - Lato Hairline
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7d1f7df575977bd4a9d0c8698572099c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

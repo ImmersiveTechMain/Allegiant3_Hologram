@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 98141fb0ea89c3f43953e2f8e19526cd
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Poppins ExtraLight
+  fontNames:
+  - Poppins ExtraLight
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 252fafb0b9c945d4cb47ad8e8c32fe93, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
