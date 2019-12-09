@@ -82,7 +82,12 @@ public class SpellParticleSystem : MonoBehaviour {
             ParticleSystem ps = ParticleSystems[p];
             ParticleSystem.EmissionModule em = ps.emission;
             em.enabled = state;
+            
             ParticleSystems[p] = ps;
+            if (state) {
+                ParticleSystems[p].time = 0f;
+                ParticleSystems[p].Play(true);
+            }
         }
         for (int v = 0; v < VFXGraphs.Length; v++) {
             VFXGraphs[v].resetSeedOnPlay = true;

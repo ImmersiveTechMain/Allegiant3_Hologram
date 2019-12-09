@@ -1,7 +1,6 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - ColorStrobeLight
     - FireballSpawner
     - FlickerFire
     - Gameflow
@@ -238,8 +237,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11638}
     - Class: 114
-      Script: {instanceID: 11660}
-    - Class: 114
       Script: {instanceID: 11888}
     - Class: 114
       Script: {instanceID: 11934}
@@ -292,8 +289,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13596}
     - Class: 115
-      Script: {instanceID: 0}
-    - Class: 117
       Script: {instanceID: 0}
     - Class: 120
       Script: {instanceID: 0}
@@ -1687,4 +1682,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SpellTest.unity
-  playerPath: C:/Users/ZMyers/Documents/UnityProjects/A3/Development Builds/Dec05_Spells/Allegiant3_Spells_v08.exe
+  playerPath: C:/Users/ZMyers/Documents/UnityProjects/A3/Development Builds/Dec09_Spells/Allegiant3_Spells_v09.exe
