@@ -11,6 +11,8 @@ public class Gameflow : MonoBehaviour
     public string UDP_ToReceive_OnScannedCyclone = "SPELL_CYCLONE";
     public string UDP_ToReceive_OnScannedSnowstorm = "SPELL_SNOWSTORM";
     public string UDP_ToReceive_OnScannedConfetti = "SPELL_CONFETTI";
+    public string UDP_ToReceive_OnGameStart = "GAME_START";
+    public string UDP_ToReceive_OnGameReset = "GAME_RESET";
 
     [Header("Components")]
     public SpellComboManager SpellManager;
@@ -19,7 +21,7 @@ public class Gameflow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UDP.onMessageReceived = UDP_MessageReceived;
+        ResetGame();
     }
 
     // Update is called once per frame
@@ -28,13 +30,44 @@ public class Gameflow : MonoBehaviour
         
     }
 
+    public void ResetGame() {
+        UDP.onMessageReceived = UDP_MessageReceived;
+        SpellManager.Reset();
+    }
 
     void UDP_MessageReceived(string command) {
         if (command != null && command.Length > 0) {
-            if (command == UDP_ToReceive_OnScannedFireball) {
+            if (command.ToUpper() == UDP_ToReceive_OnScannedFireball.ToUpper()) {
+                SpellManager.ToggleFireball();
+            }
+
+            if (command.ToUpper() == UDP_ToReceive_OnScannedLightning.ToUpper()) {
+                SpellManager.ToggleLightningBall();
+            }
+
+            if (command.ToUpper() == UDP_ToReceive_OnScannedTornado.ToUpper()) {
+                SpellManager.ToggleTornado();
+            }
+
+            if (command.ToUpper() == UDP_ToReceive_OnScannedConfetti.ToUpper()) {
+                SpellManager.ToggleConfetti();
+            }
+
+            if (command.ToUpper() == UDP_ToReceive_OnScannedCyclone.ToUpper()) {
+                SpellManager.ToggleCyclone();
+            }
+
+            if (command.ToUpper() == UDP_ToReceive_OnScannedSnowstorm.ToUpper()) {
+                SpellManager.ToggleSnowstorm();
+            }
+
+            if (command.ToUpper() == UDP_ToReceive_OnGameStart.ToUpper()) {
                 
             }
 
+            if (command.ToUpper() == UDP_ToReceive_OnGameReset.ToUpper()) {
+
+            }
         }
     }
 

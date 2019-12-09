@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpellComboManager : MonoBehaviour {
+
+    [Header("UDP")]
+    public string UDP_ToSend_CompleteFinalSpell = "FINAL_SPELL_COMPLETE";
+
     [Header("Settings")]
     public Vector3 PrimaryProjectilePosition = new Vector3(0f, 11f, -20f);
     public Vector3 SecondaryProjectileOffset = new Vector3(4f, 0f, 0f);
@@ -33,13 +37,15 @@ public class SpellComboManager : MonoBehaviour {
     [Header("Components")]
     public CanvasGroup WellSpellCover;
 
+    
 
 
+  
 
-    // Start is called before the first frame update
-    void Start() {
+    public void Reset() {
         foreach (SpellParticleSystem spell in AllSpellSystems) {
             if (spell != null) {
+                spell.gameObject.SetActive(true);
                 spell.EnableSystems(false, false);
             }
         }
@@ -267,6 +273,8 @@ public class SpellComboManager : MonoBehaviour {
     IEnumerator CompleteFinalSpellCoroutine() {
         float startTime = Time.time;
         float duration = 4.0f;
+
+        UDP.Write(UDP_ToSend_CompleteFinalSpell);
 
         while (Time.time - startTime < duration) {
             WellSpellCover.alpha = Mathf.Lerp(1.0f, 0.0f, (Time.time - startTime) / duration);

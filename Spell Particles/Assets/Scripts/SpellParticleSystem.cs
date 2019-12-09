@@ -29,6 +29,7 @@ public class SpellParticleSystem : MonoBehaviour {
     internal bool canBeDisabled = true;
     internal bool SpellScanOnCooldown = false;
 
+  
 
     private void Awake() {
         EnableSystems(SystemsAreEnabled);
