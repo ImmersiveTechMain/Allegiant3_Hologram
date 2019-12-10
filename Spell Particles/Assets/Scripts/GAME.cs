@@ -22,6 +22,7 @@ public class GAME : MonoBehaviour
 
         Audio.DestroyAllSounds();
         potionMixerGameflow.Setup();
+        spellGameflow.Setup();
     }
 
     public void StartGame()

@@ -19,16 +19,11 @@ public class Gameflow : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    public void Setup()
     {
         ResetGame();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void ResetGame() {
         UDP.onMessageReceived = UDP_MessageReceived;
