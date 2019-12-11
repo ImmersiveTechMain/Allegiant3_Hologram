@@ -81587,11 +81587,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10fcec94bcdce84f981ddc933366597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UDP_ToSend_CompleteFinalSpell: FINAL_SPELL_COMPLETE
+  UDP_ToSend_CompleteFinalSpell: SOLVED_PZ01
   PrimaryProjectilePosition: {x: 0, y: 13, z: -20}
   SecondaryProjectileOffset: {x: 5, y: 0, z: 0}
   ProjectileThrowDuration: 0.5
-  SpellScanCooldown: 3
+  SpellScanOnCooldown: 0
+  GlobalSpellCooldown: 1.5
   Fireball: {fileID: 1267179453}
   Lightningball: {fileID: 897079216}
   Tornado: {fileID: 1701891810}
@@ -96022,14 +96023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612ecded8391e9642ab2575ddba456b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UDP_ToReceive_OnScannedFireball: SPELL_FIREBALL
-  UDP_ToReceive_OnScannedLightning: SPELL_LIGHTNING
-  UDP_ToReceive_OnScannedTornado: SPELL_TORNADO
-  UDP_ToReceive_OnScannedCyclone: SPELL_CYCLONE
-  UDP_ToReceive_OnScannedSnowstorm: SPELL_SNOWSTORM
-  UDP_ToReceive_OnScannedConfetti: SPELL_CONFETTI
-  UDP_ToReceive_OnGameStart: GAME_START
-  UDP_ToReceive_OnGameReset: GAME_RESET
+  UDP_ToReceive_SpellPegs: SPELL_
   SpellManager: {fileID: 1157774899}
 --- !u!4 &1368614213
 Transform:
@@ -99235,7 +99229,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1431923498}
   - component: {fileID: 1431923501}
-  - component: {fileID: 1431923500}
   - component: {fileID: 1431923499}
   m_Layer: 0
   m_Name: Camera
@@ -99352,14 +99345,6 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
---- !u!81 &1431923500
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431923497}
-  m_Enabled: 1
 --- !u!20 &1431923501
 Camera:
   m_ObjectHideFlags: 0
@@ -117163,7 +117148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24eb55d14a42c844984b46d00445b12b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ip: 10.199.199.100
+  ip: 10.199.199.130
   hostName: 255.255.255.10
   port: 3000
   writePort: 2500
@@ -124318,7 +124303,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_TargetDisplay: 0
+  m_TargetDisplay: 2
 --- !u!1 &1755502321
 GameObject:
   m_ObjectHideFlags: 0
@@ -136466,6 +136451,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsTemporary: 0
+--- !u!1 &2010853962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2010853964}
+  - component: {fileID: 2010853963}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2010853963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010853962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd129f9f46cb8b2478c700d8d6c0c80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MusicVolume: 1
+  SFXVolume: 1
+--- !u!4 &2010853964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010853962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2011064091
 GameObject:
   m_ObjectHideFlags: 0

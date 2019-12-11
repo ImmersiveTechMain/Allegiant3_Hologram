@@ -12,8 +12,8 @@ public class SpellComboManager : MonoBehaviour {
     public Vector3 SecondaryProjectileOffset = new Vector3(4f, 0f, 0f);
     public float ProjectileThrowDuration = 1f;
 
-    public static bool SpellScanOnCooldown = false;
-    public float SpellScanCooldown = 3f;
+    public bool SpellScanOnCooldown = false;
+    public float GlobalSpellCooldown = 1.5f;
 
     [Header("Base Spells")]
     public SpellParticleSystem Fireball;
@@ -98,9 +98,10 @@ public class SpellComboManager : MonoBehaviour {
     }
 
     public void ToggleFireball() {
-        if (Fireball.WaitForCooldown() || FinalComboSpellIsFormed())
+        if (FinalComboSpellIsFormed() || Fireball.WaitForCooldown() || WaitForGlobalCooldown())
             return;
 
+        Debug.Log("Toggling fireball...");
         Fireball.transform.position = (ballsActive == 1 && !Fireball.SystemsAreEnabled ? PrimaryProjectilePosition + SecondaryProjectileOffset : PrimaryProjectilePosition);
         Fireball.EnableSystems(!Fireball.SystemsAreEnabled);
         Fireball.ActionsOnAllParticles((p) => { p.Clear(); });
@@ -108,41 +109,46 @@ public class SpellComboManager : MonoBehaviour {
     }
 
     public void ToggleLightningBall() {
-        if (Lightningball.WaitForCooldown() || FinalComboSpellIsFormed())
+        if (FinalComboSpellIsFormed() || Lightningball.WaitForCooldown() || WaitForGlobalCooldown())
             return;
 
+        Debug.Log("Toggling lightning...");
         Lightningball.transform.position = (ballsActive == 1 && !Lightningball.SystemsAreEnabled ? PrimaryProjectilePosition + SecondaryProjectileOffset : PrimaryProjectilePosition);
         Lightningball.EnableSystems(!Lightningball.SystemsAreEnabled);
         StartCoroutine(MixSpellsCoroutine());
     }
 
     public void ToggleTornado() {
-        if (Tornado.WaitForCooldown() || FinalComboSpellIsFormed())
+        if (FinalComboSpellIsFormed() || Tornado.WaitForCooldown() || WaitForGlobalCooldown())
             return;
 
+        Debug.Log("Toggling tornado...");
         Tornado.EnableSystems(!Tornado.SystemsAreEnabled);
         StartCoroutine(MixSpellsCoroutine());
     }
 
 
     public void ToggleCyclone() {
-        if (Cyclone.WaitForCooldown() || FinalComboSpellIsFormed())
+        if (FinalComboSpellIsFormed() || Cyclone.WaitForCooldown() || WaitForGlobalCooldown())
             return;
 
+        Debug.Log("Toggling cyclone...");
         Cyclone.EnableSystems(!Cyclone.SystemsAreEnabled);
     }
 
     public void ToggleSnowstorm() {
-        if (Snowstorm.WaitForCooldown() || FinalComboSpellIsFormed())
+        if (FinalComboSpellIsFormed() || Snowstorm.WaitForCooldown() || WaitForGlobalCooldown())
             return;
 
+        Debug.Log("Toggling snowstorm...");
         Snowstorm.EnableSystems(!Snowstorm.SystemsAreEnabled);
     }
 
     public void ToggleConfetti() {
-        if (Confetti.WaitForCooldown() || FinalComboSpellIsFormed())
+        if (FinalComboSpellIsFormed() || Confetti.WaitForCooldown() || WaitForGlobalCooldown())
             return;
 
+        Debug.Log("Toggling confetti...");
         Confetti.EnableSystems(!Confetti.SystemsAreEnabled);
     }
 
@@ -244,26 +250,31 @@ public class SpellComboManager : MonoBehaviour {
         return Tornado.SystemsAreEnabled ? Tornado : LightningTornado.SystemsAreEnabled ? LightningTornado : FireTornado.SystemsAreEnabled ? FireTornado : FireLightningTornado.SystemsAreEnabled ? FireLightningTornado : null;
     }
 
-    bool FinalComboSpellIsFormed() {
+    bool FinalComboSpellIsFormed() {        
         return FireLightningTornado.SystemsAreEnabled;
     }
 
 
-    bool WaitForGlobalCooldown() {
+    bool WaitForGlobalCooldown(bool goToCooldownOnCheck = true) {
+        return false;
         if (SpellScanOnCooldown) {
             return true;
-        } else {
+        } else if (goToCooldownOnCheck) {
             StartCoroutine(SpellScanCooldownCoroutine());
+            return false;
+        } else {
             return false;
         }
     }
 
 
     IEnumerator SpellScanCooldownCoroutine() {
-        SpellScanOnCooldown = true;
-        yield return new WaitForSeconds(SpellScanCooldown);
-
-        SpellScanOnCooldown = false;
+        if (!SpellScanOnCooldown) {
+            SpellScanOnCooldown = true;
+            yield return new WaitForSeconds(GlobalSpellCooldown);
+            SpellScanOnCooldown = false;
+            yield return null;
+        }
     }
 
     void CompleteFinalSpell() {

@@ -1,8 +1,10 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - Audio
     - FireballSpawner
     - FlickerFire
+    - GAME
     - Gameflow
     - HologramChild
     - HologramParent
@@ -11,11 +13,15 @@ ScriptsOnlyBuild:
     - MoveInSpiral
     - MoveWithinBounds
     - MultiDisplaySetup
+    - PotionMixer
+    - PotionMixer_Scene.Gameflow
     - Rotate
     - ScrollUV
     - SpellComboManager
     - SpellParticleSystem
     - UDP
+    - UIPotionFound
+    - VideoPlayer
     Unity.RenderPipelines.Core.Runtime.dll:
     - UnityEngine.Rendering.Volume
     - UnityEngine.Rendering.VolumeProfile
@@ -62,6 +68,12 @@ ScriptsOnlyBuild:
     - UnityEngine.Experimental.Rendering.UI.DebugUIHandlerVector3
     - UnityEngine.Experimental.Rendering.UI.DebugUIHandlerVector4
     - UnityEngine.Experimental.Rendering.UI.UIFoldout
+    Unity.TextMeshPro.dll:
+    - TMPro.TMP_FontAsset
+    - TMPro.TMP_Settings
+    - TMPro.TMP_SpriteAsset
+    - TMPro.TMP_StyleSheet
+    - TMPro.TextMeshProUGUI
     Unity.VisualEffectGraph.Editor.dll:
     - UnityEditor.VFX.Block.AttributeFromCurve
     - UnityEditor.VFX.Block.CollisionPlane
@@ -150,9 +162,13 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
     - Class: 72
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 84
       Script: {instanceID: 0}
@@ -160,134 +176,160 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
+    - Class: 109
+      Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9512}
+      Script: {instanceID: 9544}
     - Class: 114
-      Script: {instanceID: 9616}
+      Script: {instanceID: 9648}
     - Class: 114
-      Script: {instanceID: 9640}
+      Script: {instanceID: 9672}
     - Class: 114
-      Script: {instanceID: 9838}
-    - Class: 114
-      Script: {instanceID: 9840}
-    - Class: 114
-      Script: {instanceID: 9842}
-    - Class: 114
-      Script: {instanceID: 9846}
+      Script: {instanceID: 9826}
     - Class: 114
       Script: {instanceID: 9852}
     - Class: 114
-      Script: {instanceID: 9856}
+      Script: {instanceID: 9874}
     - Class: 114
-      Script: {instanceID: 9860}
+      Script: {instanceID: 9876}
     - Class: 114
-      Script: {instanceID: 9864}
-    - Class: 114
-      Script: {instanceID: 9868}
+      Script: {instanceID: 9878}
     - Class: 114
       Script: {instanceID: 9882}
     - Class: 114
-      Script: {instanceID: 9886}
-    - Class: 114
       Script: {instanceID: 9888}
+    - Class: 114
+      Script: {instanceID: 9892}
     - Class: 114
       Script: {instanceID: 9896}
     - Class: 114
-      Script: {instanceID: 9898}
-    - Class: 114
       Script: {instanceID: 9900}
     - Class: 114
-      Script: {instanceID: 9908}
+      Script: {instanceID: 9904}
+    - Class: 114
+      Script: {instanceID: 9918}
+    - Class: 114
+      Script: {instanceID: 9922}
+    - Class: 114
+      Script: {instanceID: 9924}
+    - Class: 114
+      Script: {instanceID: 9932}
     - Class: 114
       Script: {instanceID: 9934}
     - Class: 114
-      Script: {instanceID: 10046}
+      Script: {instanceID: 9936}
     - Class: 114
-      Script: {instanceID: 10048}
+      Script: {instanceID: 9944}
     - Class: 114
-      Script: {instanceID: 10058}
+      Script: {instanceID: 9958}
     - Class: 114
-      Script: {instanceID: 10066}
+      Script: {instanceID: 9972}
     - Class: 114
-      Script: {instanceID: 10114}
+      Script: {instanceID: 10084}
     - Class: 114
-      Script: {instanceID: 10448}
+      Script: {instanceID: 10086}
     - Class: 114
-      Script: {instanceID: 10512}
+      Script: {instanceID: 10096}
     - Class: 114
-      Script: {instanceID: 10676}
+      Script: {instanceID: 10104}
     - Class: 114
-      Script: {instanceID: 10918}
+      Script: {instanceID: 10152}
     - Class: 114
-      Script: {instanceID: 10980}
+      Script: {instanceID: 10548}
     - Class: 114
-      Script: {instanceID: 11122}
+      Script: {instanceID: 10712}
     - Class: 114
-      Script: {instanceID: 11166}
+      Script: {instanceID: 10880}
     - Class: 114
-      Script: {instanceID: 11184}
+      Script: {instanceID: 10908}
     - Class: 114
-      Script: {instanceID: 11338}
+      Script: {instanceID: 10956}
     - Class: 114
-      Script: {instanceID: 11406}
+      Script: {instanceID: 11018}
     - Class: 114
-      Script: {instanceID: 11438}
+      Script: {instanceID: 11160}
     - Class: 114
-      Script: {instanceID: 11560}
+      Script: {instanceID: 11204}
     - Class: 114
-      Script: {instanceID: 11638}
+      Script: {instanceID: 11222}
     - Class: 114
-      Script: {instanceID: 11888}
+      Script: {instanceID: 11376}
     - Class: 114
-      Script: {instanceID: 11934}
+      Script: {instanceID: 11444}
     - Class: 114
-      Script: {instanceID: 12034}
+      Script: {instanceID: 11476}
     - Class: 114
-      Script: {instanceID: 12042}
+      Script: {instanceID: 11598}
     - Class: 114
-      Script: {instanceID: 12200}
+      Script: {instanceID: 11668}
     - Class: 114
-      Script: {instanceID: 12238}
+      Script: {instanceID: 11678}
     - Class: 114
-      Script: {instanceID: 12246}
+      Script: {instanceID: 11928}
     - Class: 114
-      Script: {instanceID: 12426}
+      Script: {instanceID: 11974}
     - Class: 114
-      Script: {instanceID: 12552}
+      Script: {instanceID: 12058}
     - Class: 114
-      Script: {instanceID: 12670}
+      Script: {instanceID: 12074}
     - Class: 114
-      Script: {instanceID: 12834}
+      Script: {instanceID: 12082}
     - Class: 114
-      Script: {instanceID: 12842}
+      Script: {instanceID: 12086}
     - Class: 114
-      Script: {instanceID: 12896}
+      Script: {instanceID: 12240}
     - Class: 114
-      Script: {instanceID: 12980}
+      Script: {instanceID: 12278}
     - Class: 114
-      Script: {instanceID: 13104}
+      Script: {instanceID: 12286}
     - Class: 114
-      Script: {instanceID: 13116}
+      Script: {instanceID: 12468}
+    - Class: 114
+      Script: {instanceID: 12476}
+    - Class: 114
+      Script: {instanceID: 12594}
+    - Class: 114
+      Script: {instanceID: 12712}
+    - Class: 114
+      Script: {instanceID: 12876}
+    - Class: 114
+      Script: {instanceID: 12884}
+    - Class: 114
+      Script: {instanceID: 12938}
+    - Class: 114
+      Script: {instanceID: 13022}
+    - Class: 114
+      Script: {instanceID: 13072}
+    - Class: 114
+      Script: {instanceID: 13146}
     - Class: 114
       Script: {instanceID: 13158}
     - Class: 114
-      Script: {instanceID: 13210}
+      Script: {instanceID: 13200}
     - Class: 114
-      Script: {instanceID: 13398}
+      Script: {instanceID: 13252}
     - Class: 114
-      Script: {instanceID: 13412}
+      Script: {instanceID: 13448}
     - Class: 114
-      Script: {instanceID: 13414}
+      Script: {instanceID: 13462}
     - Class: 114
-      Script: {instanceID: 13420}
-    - Class: 114
-      Script: {instanceID: 13450}
+      Script: {instanceID: 13464}
     - Class: 114
       Script: {instanceID: 13470}
     - Class: 114
-      Script: {instanceID: 13592}
+      Script: {instanceID: 13500}
     - Class: 114
-      Script: {instanceID: 13596}
+      Script: {instanceID: 13520}
+    - Class: 114
+      Script: {instanceID: 13580}
+    - Class: 114
+      Script: {instanceID: 13594}
+    - Class: 114
+      Script: {instanceID: 13646}
+    - Class: 114
+      Script: {instanceID: 13650}
+    - Class: 114
+      Script: {instanceID: 42522}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -309,6 +351,10 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
     - Class: 225
+      Script: {instanceID: 0}
+    - Class: 328
+      Script: {instanceID: 0}
+    - Class: 329
       Script: {instanceID: 0}
     - Class: 73398921
       Script: {instanceID: 0}
@@ -427,10 +473,22 @@ ScriptsOnlyBuild:
     className: VFXRigidBodyCollisionEventBinder
   - hash:
       serializedVersion: 2
+      Hash: 322427d4312ff91a3307495b26f773bc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UDP
+  - hash:
+      serializedVersion: 2
       Hash: 2a16eb6d04a0cbd2c233813c97c5affe
     assemblyName: Unity.RenderPipelines.HighDefinition.Runtime.dll
     namespaceName: UnityEngine.Experimental.Rendering.HDPipeline
     className: RenderPipelineResources
+  - hash:
+      serializedVersion: 2
+      Hash: c9a2ba8867e6a2dea87997ec727f15d2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: VideoPlayer
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -623,6 +681,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: VerticalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 5d669c3b6eba98d1697b95663b274e4a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIPotionFound
   - hash:
       serializedVersion: 2
       Hash: 7dbf450932234158be58ca2027563dcb
@@ -919,12 +983,6 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: 322427d4312ff91a3307495b26f773bc
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: UDP
-  - hash:
-      serializedVersion: 2
       Hash: 4654a438523d353481544eb5c55b91fb
     assemblyName: Unity.RenderPipelines.HighDefinition.Runtime.dll
     namespaceName: UnityEngine.Experimental.Rendering.HDPipeline
@@ -995,6 +1053,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ControlPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 18474462d7ee381b70cdd4b97773e80e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: PotionMixer_Scene
+    className: Gameflow
   - hash:
       serializedVersion: 2
       Hash: 5c2a2df122ff85322cd770df9892d754
@@ -1189,6 +1253,12 @@ ScriptsOnlyBuild:
     className: VolumeProfile
   - hash:
       serializedVersion: 2
+      Hash: 18a29fc58ed445af7e3fd389931eafa5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GAME
+  - hash:
+      serializedVersion: 2
       Hash: 466bb57043dac1c1d1d7ef0194388764
     assemblyName: Unity.RenderPipelines.HighDefinition.Runtime.dll
     namespaceName: UnityEngine.Experimental.Rendering.HDPipeline
@@ -1243,7 +1313,7 @@ ScriptsOnlyBuild:
     className: ColorLookup
   - hash:
       serializedVersion: 2
-      Hash: d3657eb37471868e876f4bc60052f194
+      Hash: 8443ec5887242313163b6709955f39bf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpellComboManager
@@ -1519,7 +1589,7 @@ ScriptsOnlyBuild:
     className: VFXMouseEventBinder
   - hash:
       serializedVersion: 2
-      Hash: c8f7ac44f73e5bb3191e43781db87a46
+      Hash: 25774387e69724fa3ccd5fe52d88bd26
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Gameflow
@@ -1577,6 +1647,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LightningBall
+  - hash:
+      serializedVersion: 2
+      Hash: aa51f67bdcac71bfc1076b207ed8809f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MultipleDisplaySetup_Custom
   - hash:
       serializedVersion: 2
       Hash: 8649814970b42d345b89944b862453cc
@@ -1657,6 +1733,18 @@ ScriptsOnlyBuild:
     className: MicroShadowing
   - hash:
       serializedVersion: 2
+      Hash: e15fc18fcb1c8553e766d8e875685c31
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Audio
+  - hash:
+      serializedVersion: 2
+      Hash: dc6fb29bb112242d4543f1f6e4ef9159
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PotionMixer
+  - hash:
+      serializedVersion: 2
       Hash: 60f1b089e372e35bead61a4d8a712d27
     assemblyName: Unity.VisualEffectGraph.Runtime.dll
     namespaceName: UnityEngine.VFX.Utils
@@ -1682,4 +1770,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SpellTest.unity
-  playerPath: C:/Users/ZMyers/Documents/UnityProjects/A3/Development Builds/Dec09_Spells/Allegiant3_Spells_v09.exe
+  playerPath: C:/Users/ZMyers/Documents/UnityProjects/A3/Development Builds/Dec10_Spells/Allegiant3_Spells_v11.exe
