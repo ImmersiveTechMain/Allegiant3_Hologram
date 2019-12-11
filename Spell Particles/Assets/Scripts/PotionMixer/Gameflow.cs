@@ -9,6 +9,9 @@ namespace PotionMixer_Scene
     {
         public string UDP_IngredientScanned = "INGREDIENT_";
         public string UDP_ClearCauldron = "CLEAR";
+        public string UDP_KeyPotionsScanned = "SOLVED_PZ02";
+
+        public string[] keyPotions;
 
         public AudioClip MUSIC_Bubbles;
         public AudioClip[] SFXs_Drops;
@@ -26,8 +29,27 @@ namespace PotionMixer_Scene
             Audio.PlayMusic(MUSIC_Bubbles, true, true, 5);
             Audio.MusicChannel.SetPitch(0.4f);
             potionMixer.OnPotionMatchFound = UIPotionFound.Show;
+            potionMixer.OnPotionMatchFound += CheckPotion;
             potionMixer.OnExtractAdded = (extract) => { if (SFXs_Drops != null && SFXs_Drops.Length > 0) { Audio.PlaySFX(SFXs_Drops[Random.Range(0, SFXs_Drops.Length)]); } };
             potionMixer.Clear();
+        }
+
+        bool[] potionsCompleted = null;
+        public void CheckPotion (Potion potion)
+        {
+            if (keyPotions == null || keyPotions.Length <= 0) return;
+            potionsCompleted = potionsCompleted ?? new bool[keyPotions.Length];
+            bool allCompleted = true;
+            for (int i = 0; i < potionsCompleted.Length; i++)
+            {
+                if (keyPotions[i].ToLower() == potion.name.ToLower()) { potionsCompleted[i] = true; }
+                allCompleted &= potionsCompleted[i];
+            }
+
+            if (allCompleted)
+            {
+                UDP.Write(UDP_KeyPotionsScanned);
+            }
         }
 
         public void Reset()

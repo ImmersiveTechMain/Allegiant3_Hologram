@@ -27,7 +27,6 @@ public class Gameflow : MonoBehaviour
 
 
     public void ResetGame() {
-        UDP.onMessageReceived = UDP_MessageReceived;
         SpellManager.Reset();
     }
 
