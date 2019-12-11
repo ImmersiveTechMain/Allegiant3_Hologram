@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.VFX;
 
+public enum SpellShape {
+    Ball,
+    Tornado,
+    Other
+}
+
 public class SpellParticleSystem : MonoBehaviour {
     public delegate void CALLBACK();
     public CALLBACK OnEnabled = delegate () { };
@@ -17,9 +23,12 @@ public class SpellParticleSystem : MonoBehaviour {
     public Light[] Lights;
 
     [Header("Settings")]
+    public SpellShape SpellShape = SpellShape.Other;
+    public bool CanCombine = false;
     public bool SystemsAreEnabled = true;
     public float AutoDisableTime = 0f;
     public float SpellScanCooldown = 8f;
+    public KeyCode DebugKey = KeyCode.None;
 
     [Header("Prefab Effects")]
     public GameObject[] BirthEffects;

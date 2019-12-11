@@ -162,8 +162,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: -664
     y: -680
-    width: 4702
-    height: 1924
+    width: 4711
+    height: 1926
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1526,19 +1526,19 @@ VisualEffectResource:
             serializedVersion: 2
             m_Curve:
             - serializedVersion: 3
-              time: 0
-              value: 0.08673096
-              inSlope: 0.40286255
-              outSlope: 0.40286255
+              time: -0.0083351135
+              value: 1.0065308
+              inSlope: -0.0027656106
+              outSlope: -0.0027656106
               tangentMode: 34
               weightedMode: 0
               inWeight: 0
               outWeight: 0
             - serializedVersion: 3
-              time: 1
-              value: 0.4895935
-              inSlope: 0.40286255
-              outSlope: 0.40286255
+              time: 0.9958191
+              value: 1.0037537
+              inSlope: -0.0027656106
+              outSlope: -0.0027656106
               tangentMode: 34
               weightedMode: 0
               inWeight: 0
@@ -1938,7 +1938,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.08673095703125,"inTangent":0.402862548828125,"outTangent":0.402862548828125,"tangentMode":34},{"time":1.0,"value":0.489593505859375,"inTangent":0.402862548828125,"outTangent":0.402862548828125,"tangentMode":34}],"preWrapMode":8,"postWrapMode":8}'
+      m_SerializableObject: '{"frames":[{"time":-0.008335113525390625,"value":1.00653076171875,"inTangent":-0.0027656105812639,"outTangent":-0.0027656105812639,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false},{"time":0.995819091796875,"value":1.003753662109375,"inTangent":-0.0027656105812639,"outTangent":-0.0027656105812639,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
     m_Space: 2147483647
   m_Property:
     name: Size
