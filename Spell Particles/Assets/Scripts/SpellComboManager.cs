@@ -267,31 +267,35 @@ public class SpellComboManager : MonoBehaviour {
         }
     }
 
-    void CheckSpellPegs() {
-        if (PegsAreActive(1, 5, 3, 4) || PegsAreActive(8, 12, 10, 11) || PegsAreActive(15, 19, 17, 18)) {
+    void CheckSpellPegs()
+    {
+        if (PegsAreActive(1, 5, 3, 4) || PegsAreActive(8, 12, 10, 11) || PegsAreActive(15, 19, 17, 18))
+        {
             //CONFETTI
             ToggleSpell(Confetti);
         }
-        if (PegsAreActive(6, 4, 5, 2) || PegsAreActive(13, 9, 12, 14) || PegsAreActive(20, 16, 19, 21)) {
+        if (PegsAreActive(6, 3, 5, 2) || PegsAreActive(13, 9, 12, 14) || PegsAreActive(20, 16, 19, 21))
+        {
             //CYCLONE
             ToggleSpell(Cyclone);
         }
-        if (PegsAreActive(6, 5, 3, 2) || PegsAreActive(13, 12, 10, 14) || PegsAreActive(20, 19, 17, 21)) {
+        if (PegsAreActive(6, 5, 4, 2) || PegsAreActive(13, 12, 11, 14) || PegsAreActive(20, 19, 18, 21))
+        {
             //SNOWSTORM
             ToggleSpell(Snowstorm);
         }
-
-        
-        
-        if (PegsAreActive(6, 7, 5, 4) || PegsAreActive(13, 14, 12, 11) || PegsAreActive(20, 21, 19, 18)) {
+        if (PegsAreActive(6, 7, 5, 3) || PegsAreActive(13, 14, 12, 10) || PegsAreActive(20, 21, 19, 17))
+        {
             //TORNADO
             ToggleSpell(Tornado);
         }
-        if (PegsAreActive(1, 6, 3, 4) || PegsAreActive(8, 13, 10, 11) || PegsAreActive(15, 20, 17, 18)) {
+        if (PegsAreActive(1, 6, 3, 4) || PegsAreActive(8, 13, 10, 11) || PegsAreActive(15, 20, 17, 18))
+        {
             //LIGHTNING
             ToggleSpell(Lightningball);
         }
-        if (PegsAreActive(1, 6, 3, 5) || PegsAreActive(8, 13, 10, 12) || PegsAreActive(15, 20, 17, 19)) {
+        if (PegsAreActive(1, 6, 4, 5) || PegsAreActive(8, 13, 11, 12) || PegsAreActive(15, 20, 18, 19))
+        {
             //FIREBALL
             ToggleSpell(Fireball);
         }

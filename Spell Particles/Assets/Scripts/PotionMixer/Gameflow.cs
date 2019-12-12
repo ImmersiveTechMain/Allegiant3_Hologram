@@ -21,8 +21,13 @@ namespace PotionMixer_Scene
         public VideoPlayer videoPlayer_magicMirror;
 
         [Header("Videos")]
+        public VideoClip safetyVideo;
         public VideoClip introVideo;
-        
+        public VideoClip magicRealmUnlockedVideo;
+        public VideoClip magicSongVideo;
+        public VideoClip loseVideo;
+        public VideoClip winVideo;
+
         public void Setup()
         {
             Audio.MusicMasterVolume = 0.2f;
@@ -59,7 +64,32 @@ namespace PotionMixer_Scene
 
         public void GameStarts()
         {
-            videoPlayer_magicMirror.PlayVideo(introVideo);
+            videoPlayer_magicMirror.PlayVideo(safetyVideo, false,null, false, ()=>this.ActionAfterFrameDelay(1, ()=> { videoPlayer_magicMirror.PlayVideo(introVideo); }));
+        }
+        
+        public void OnMagicRealUnlocked()
+        {
+            PlayVideo(magicRealmUnlockedVideo);
+        }
+
+        public void OnWellCompleted()
+        {
+            PlayVideo(magicSongVideo);
+        }
+
+        public void PlayVideo(VideoClip video)
+        {
+            videoPlayer_magicMirror.PlayVideo(video);
+        }
+
+        public void GameLost()
+        {
+            PlayVideo(loseVideo);
+        }
+
+        public void GameCompleted()
+        {
+            PlayVideo(winVideo);
         }
 
         public void UDP_Commands(string command)

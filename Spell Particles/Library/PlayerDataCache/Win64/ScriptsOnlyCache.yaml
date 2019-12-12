@@ -17,11 +17,14 @@ ScriptsOnlyBuild:
     - PotionMixer_Scene.Gameflow
     - Rotate
     - ScrollUV
+    - SparkEffect_UI
     - SpellComboManager
     - SpellParticleSystem
     - UDP
     - UIPotionFound
+    - UI_Timer
     - VideoPlayer
+    - WellManager
     Unity.RenderPipelines.Core.Runtime.dll:
     - UnityEngine.Rendering.Volume
     - UnityEngine.Rendering.VolumeProfile
@@ -253,83 +256,89 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11222}
     - Class: 114
-      Script: {instanceID: 11376}
+      Script: {instanceID: 11296}
     - Class: 114
-      Script: {instanceID: 11444}
+      Script: {instanceID: 11378}
     - Class: 114
-      Script: {instanceID: 11476}
+      Script: {instanceID: 11446}
     - Class: 114
-      Script: {instanceID: 11598}
+      Script: {instanceID: 11478}
     - Class: 114
-      Script: {instanceID: 11668}
+      Script: {instanceID: 11600}
     - Class: 114
-      Script: {instanceID: 11678}
+      Script: {instanceID: 11670}
     - Class: 114
-      Script: {instanceID: 11928}
+      Script: {instanceID: 11680}
     - Class: 114
-      Script: {instanceID: 11974}
+      Script: {instanceID: 11930}
     - Class: 114
-      Script: {instanceID: 12058}
+      Script: {instanceID: 11976}
     - Class: 114
-      Script: {instanceID: 12074}
+      Script: {instanceID: 12060}
     - Class: 114
-      Script: {instanceID: 12082}
+      Script: {instanceID: 12076}
     - Class: 114
-      Script: {instanceID: 12086}
+      Script: {instanceID: 12084}
     - Class: 114
-      Script: {instanceID: 12240}
+      Script: {instanceID: 12088}
     - Class: 114
-      Script: {instanceID: 12278}
+      Script: {instanceID: 12242}
     - Class: 114
-      Script: {instanceID: 12286}
+      Script: {instanceID: 12280}
     - Class: 114
-      Script: {instanceID: 12468}
+      Script: {instanceID: 12288}
     - Class: 114
-      Script: {instanceID: 12476}
+      Script: {instanceID: 12348}
     - Class: 114
-      Script: {instanceID: 12594}
+      Script: {instanceID: 12472}
     - Class: 114
-      Script: {instanceID: 12712}
+      Script: {instanceID: 12480}
     - Class: 114
-      Script: {instanceID: 12876}
+      Script: {instanceID: 12598}
     - Class: 114
-      Script: {instanceID: 12884}
+      Script: {instanceID: 12716}
     - Class: 114
-      Script: {instanceID: 12938}
+      Script: {instanceID: 12880}
     - Class: 114
-      Script: {instanceID: 13022}
+      Script: {instanceID: 12888}
     - Class: 114
-      Script: {instanceID: 13072}
+      Script: {instanceID: 12942}
     - Class: 114
-      Script: {instanceID: 13146}
+      Script: {instanceID: 13026}
     - Class: 114
-      Script: {instanceID: 13158}
+      Script: {instanceID: 13076}
     - Class: 114
-      Script: {instanceID: 13200}
+      Script: {instanceID: 13150}
     - Class: 114
-      Script: {instanceID: 13252}
+      Script: {instanceID: 13162}
     - Class: 114
-      Script: {instanceID: 13448}
+      Script: {instanceID: 13204}
     - Class: 114
-      Script: {instanceID: 13462}
+      Script: {instanceID: 13256}
     - Class: 114
-      Script: {instanceID: 13464}
+      Script: {instanceID: 13452}
     - Class: 114
-      Script: {instanceID: 13470}
+      Script: {instanceID: 13466}
     - Class: 114
-      Script: {instanceID: 13500}
+      Script: {instanceID: 13468}
     - Class: 114
-      Script: {instanceID: 13520}
+      Script: {instanceID: 13474}
+    - Class: 114
+      Script: {instanceID: 13504}
+    - Class: 114
+      Script: {instanceID: 13524}
     - Class: 114
       Script: {instanceID: 13580}
     - Class: 114
-      Script: {instanceID: 13594}
+      Script: {instanceID: 13586}
     - Class: 114
-      Script: {instanceID: 13646}
+      Script: {instanceID: 13600}
     - Class: 114
-      Script: {instanceID: 13650}
+      Script: {instanceID: 13652}
     - Class: 114
-      Script: {instanceID: 42522}
+      Script: {instanceID: 13656}
+    - Class: 114
+      Script: {instanceID: 42708}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -683,7 +692,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 5d669c3b6eba98d1697b95663b274e4a
+      Hash: bdf802562acbb4d86da763c69381baec
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIPotionFound
@@ -1001,7 +1010,7 @@ ScriptsOnlyBuild:
     className: VisualEnvironment
   - hash:
       serializedVersion: 2
-      Hash: d0e98cc3c706e87644e04f0cfc48353e
+      Hash: 9d2521f931f18a3a1fb9640eede9679d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpellParticleSystem
@@ -1055,7 +1064,7 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 18474462d7ee381b70cdd4b97773e80e
+      Hash: 782e0614fbc4b38bfd7067f033caaa32
     assemblyName: Assembly-CSharp.dll
     namespaceName: PotionMixer_Scene
     className: Gameflow
@@ -1149,6 +1158,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.RenderPipelines.HighDefinition.Runtime.dll
     namespaceName: UnityEngine.Experimental.Rendering.HDPipeline
     className: ScreenSpaceRefraction
+  - hash:
+      serializedVersion: 2
+      Hash: bd50ab6033d035813e64a6b035f4221f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UI_Timer
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -1253,7 +1268,7 @@ ScriptsOnlyBuild:
     className: VolumeProfile
   - hash:
       serializedVersion: 2
-      Hash: 18a29fc58ed445af7e3fd389931eafa5
+      Hash: 2f03ffe3d4f791aa408249aeea1e9add
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GAME
@@ -1313,7 +1328,7 @@ ScriptsOnlyBuild:
     className: ColorLookup
   - hash:
       serializedVersion: 2
-      Hash: 8443ec5887242313163b6709955f39bf
+      Hash: 3e6c94888aaecac1e750316158a5d88a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpellComboManager
@@ -1469,6 +1484,12 @@ ScriptsOnlyBuild:
     className: HDRenderPipelineEditorResources
   - hash:
       serializedVersion: 2
+      Hash: c90eb44254a1db97fc1ac256e1ee4b36
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WellManager
+  - hash:
+      serializedVersion: 2
       Hash: 69a206533702b438b00c8288b4a9eeb3
     assemblyName: Unity.RenderPipelines.HighDefinition.Runtime.dll
     namespaceName: UnityEngine.Experimental.Rendering.HDPipeline
@@ -1589,7 +1610,7 @@ ScriptsOnlyBuild:
     className: VFXMouseEventBinder
   - hash:
       serializedVersion: 2
-      Hash: 25774387e69724fa3ccd5fe52d88bd26
+      Hash: 28de466e1ffe51bff90121355f1d01f5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Gameflow
@@ -1733,6 +1754,12 @@ ScriptsOnlyBuild:
     className: MicroShadowing
   - hash:
       serializedVersion: 2
+      Hash: 77b8b97fc18ffdab04d48d271ef5647f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SparkEffect_UI
+  - hash:
+      serializedVersion: 2
       Hash: e15fc18fcb1c8553e766d8e875685c31
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1770,4 +1797,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SpellTest.unity
-  playerPath: C:/Users/ZMyers/Documents/UnityProjects/A3/Development Builds/Dec10_Spells/Allegiant3_Spells_v11.exe
+  playerPath: C:/Users/skeet/Documents/Allegiant3_Hologram/Builds/Allegiant3_Spells_v12.exe

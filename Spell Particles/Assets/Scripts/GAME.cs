@@ -6,7 +6,7 @@ using Timer = SkeetoTools.Timer;
 public class GAME : MonoBehaviour
 {
     [Header("Settings")]
-    public float timerDuration = 60*30;
+    public float timerDuration = 60 * 30;
 
     [Header("Components")]
     public Gameflow spellGameflow;
@@ -15,35 +15,73 @@ public class GAME : MonoBehaviour
     [Header("UDPs")]
     public string UDP_Receive_GameStart = "GAME_START";
     public string UDP_Receive_GameReset = "GAME_RESET";
+    public string UDP_Receive_MagicRealmUnlocked = "MAGIC_REALM_UNLOCKED";
+    public string UDP_Receive_WellComplete = "WELL_COMPLETE";
 
     public static Timer gameTimer { private set; get; }
     public static float gameDuration = 60 * 30;
 
+    public bool isMagicRealmUnlocked { private set; get; }
+    public bool isWellCompleted { private set; get; }
+
+    public delegate void CALLBACK();
+    public CALLBACK OnWellComplete = delegate () { };
+    public CALLBACK OnMagicRealmUnlocked = delegate () { };
+
     public void Start()
     {
         DefineTimer();
-        gameTimer.OnTimerEnds = LoseGame;
+        Audio.DestroyAllSounds();
 
+        isMagicRealmUnlocked = false;
+
+        OnMagicRealmUnlocked = potionMixerGameflow.OnMagicRealUnlocked;
+        OnWellComplete = potionMixerGameflow.OnWellCompleted;
+        gameTimer.OnTimerEnds = LoseGame;
         UDP.onMessageReceived = UDP_Commands;
         UDP.onMessageReceived += spellGameflow.UDP_MessageReceived;
         UDP.onMessageReceived += potionMixerGameflow.UDP_Commands;
-        Audio.DestroyAllSounds();
+
 
         potionMixerGameflow.Setup();
         spellGameflow.Setup();
     }
 
-   
+    public void UnlockMagicRealm()
+    {
+        if (!isMagicRealmUnlocked)
+        {
+            isMagicRealmUnlocked = true;
+            OnMagicRealmUnlocked();
+        }
+    }
+
+    public void CompleteWell()
+    {
+        if (!isWellCompleted)
+        {
+            isWellCompleted = true;
+            OnWellComplete();
+        }
+    }
 
     public void LoseGame()
     {
         Debug.Log("Game Lost - Timer ran out");
+        potionMixerGameflow.GameLost();
+    }
+
+    public void GameCompleted()
+    {
+        Debug.Log("Game Completed");
+        potionMixerGameflow.GameCompleted();
+        if (gameTimer != null) { gameTimer.Pause(); }
     }
 
     public void DefineTimer()
     {
         gameDuration = timerDuration;
-        if (gameTimer != null && gameTimer.isRunning) { gameTimer.OnTimerEnds = delegate () { }; gameTimer.OnTick = delegate() { }; gameTimer.Stop(); }
+        if (gameTimer != null && gameTimer.isRunning) { gameTimer.OnTimerEnds = delegate () { }; gameTimer.OnTick = delegate () { }; gameTimer.Stop(); }
         gameTimer = new Timer(timerDuration);
     }
 
@@ -62,5 +100,7 @@ public class GAME : MonoBehaviour
     {
         if (command.ToLower() == UDP_Receive_GameStart.ToLower()) { StartGame(); }
         if (command.ToLower() == UDP_Receive_GameReset.ToLower()) { ResetGame(); }
+        if (command.ToLower() == UDP_Receive_MagicRealmUnlocked.ToLower()) { UnlockMagicRealm(); }
+        if (command.ToLower() == UDP_Receive_WellComplete.ToLower()) { CompleteWell(); }
     }
 }

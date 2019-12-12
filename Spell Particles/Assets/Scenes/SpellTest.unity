@@ -6327,10 +6327,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1280, y: 1024}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -14294,7 +14294,7 @@ GameObject:
   - component: {fileID: 209659671}
   - component: {fileID: 209659670}
   m_Layer: 5
-  m_Name: BG (1)
+  m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14317,7 +14317,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 240, y: 240}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &209659670
 MonoBehaviour:
@@ -14332,7 +14332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.012815115, b: 0.2924528, a: 1}
+  m_Color: {r: 0.098400824, g: 0, b: 0.29411766, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -22256,7 +22256,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 1ebfacbdc2eebe64f88af48117568fc3, type: 3}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -41474,6 +41474,8 @@ MonoBehaviour:
   potionMixerGameflow: {fileID: 1834560203}
   UDP_Receive_GameStart: GAME_START
   UDP_Receive_GameReset: GAME_RESET
+  UDP_Receive_MagicRealmUnlocked: MAGIC_REALM_UNLOCKED
+  UDP_Receive_WellComplete: WELL_COMPLETE
 --- !u!4 &614453947
 Transform:
   m_ObjectHideFlags: 0
@@ -42913,8 +42915,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -270}
-  m_SizeDelta: {x: 960, y: 540}
+  m_AnchoredPosition: {x: 0, y: -256}
+  m_SizeDelta: {x: 640, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &642187571
 MonoBehaviour:
@@ -43866,7 +43868,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1080, y: 1920}
+  m_SizeDelta: {x: 1024, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &657159341
 GameObject:
@@ -64542,8 +64544,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 270}
-  m_SizeDelta: {x: 960, y: 540}
+  m_AnchoredPosition: {x: 0, y: 256}
+  m_SizeDelta: {x: 640, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &895300918
 MonoBehaviour:
@@ -65820,8 +65822,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 270, y: 0}
-  m_SizeDelta: {x: 960, y: 540}
+  m_AnchoredPosition: {x: 256, y: 0}
+  m_SizeDelta: {x: 640, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &921940936
 MonoBehaviour:
@@ -95539,7 +95541,7 @@ VideoPlayer:
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: _MainTex
   m_RenderMode: 2
-  m_AspectRatio: 3
+  m_AspectRatio: 2
   m_DataSource: 0
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -106545,7 +106547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2fc7f5812f60a34fbe1d01e0324deb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DistanceFromCenter: 120
+  DistanceFromCenter: 96
 --- !u!222 &1464930792
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -124744,7 +124746,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1280, y: 1024}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -128437,7 +128439,13 @@ MonoBehaviour:
   UIPotionFound: {fileID: 1746656747}
   potionMixer: {fileID: 1091787486}
   videoPlayer_magicMirror: {fileID: 293036047}
-  introVideo: {fileID: 32900000, guid: 75454b41ed33a15488249aa9debe53f8, type: 3}
+  safetyVideo: {fileID: 32900000, guid: 75454b41ed33a15488249aa9debe53f8, type: 3}
+  introVideo: {fileID: 32900000, guid: 0677e5a8b6f74eb43ace3fa9278753cb, type: 3}
+  magicRealmUnlockedVideo: {fileID: 32900000, guid: 937505d44f915d14a93c2c880fb9678f,
+    type: 3}
+  magicSongVideo: {fileID: 32900000, guid: 123c34267ef4f8b41a03cef6637e6329, type: 3}
+  loseVideo: {fileID: 32900000, guid: a6b8ef4c7f2211e458e5e4a1be4d1cbf, type: 3}
+  winVideo: {fileID: 32900000, guid: 393e21e861054e941be31b0c32932e54, type: 3}
 --- !u!4 &1834560204
 Transform:
   m_ObjectHideFlags: 0
@@ -128948,8 +128956,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -270, y: 0}
-  m_SizeDelta: {x: 960, y: 540}
+  m_AnchoredPosition: {x: -256, y: 0}
+  m_SizeDelta: {x: 640, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1843685206
 MonoBehaviour:
@@ -130240,10 +130248,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1280, y: 1024}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -131097,7 +131105,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 86ece2dcdeb4ca546a93f9d9867fa88b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a134f59bab0ff4459b8e0831907b617, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -137860,7 +137868,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1280, y: 1024}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
