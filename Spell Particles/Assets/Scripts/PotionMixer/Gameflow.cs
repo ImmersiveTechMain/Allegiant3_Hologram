@@ -64,7 +64,7 @@ namespace PotionMixer_Scene
 
         public void GameStarts()
         {
-            videoPlayer_magicMirror.PlayVideo(safetyVideo, false,null, false, ()=>this.ActionAfterFrameDelay(1, ()=> { videoPlayer_magicMirror.PlayVideo(introVideo); }));
+            //videoPlayer_magicMirror.PlayVideo(safetyVideo, false,null, false, ()=>this.ActionAfterFrameDelay(1, ()=> { videoPlayer_magicMirror.PlayVideo(introVideo); }));
         }
         
         public void OnMagicRealUnlocked()
@@ -79,7 +79,7 @@ namespace PotionMixer_Scene
 
         public void PlayVideo(VideoClip video)
         {
-            videoPlayer_magicMirror.PlayVideo(video);
+            //videoPlayer_magicMirror.PlayVideo(video);
         }
 
         public void GameLost()

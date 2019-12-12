@@ -1,0 +1,137 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SoundPuzzle : MonoBehaviour
+{
+    public string UDP_ToReceive_StartSoundPuzzle = "START_SOUND_PUZZLE";
+    public string UDP_ToReceive_NoteScan = "NOTE_";
+    public string UDP_ToSend_CompleteSoundPuzzle = "COMPLETED_SOUND_PUZZLE";
+
+    public AudioClip[] Notes;
+    public AudioClip WellSensorSound;
+    public AudioClip IncorrectNoteSound;
+
+    public float TimeBetweenNotes = 0.5f;
+
+    public int[] correctNoteSequence;
+    private int sequenceIndex = 0;
+
+    private bool gameFinished = false;
+    private bool canPlayNotes = false;
+    
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        ClampSequence();
+    }
+
+    void BeginPuzzle() {
+        RestartSequence();
+        StartCoroutine(PlaySampleSongCoroutine());
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.P)) {
+            BeginPuzzle();
+        }
+    }
+
+    void GenerateRandomSequence() {
+        correctNoteSequence = new int[8];
+        for (int i = 0; i < correctNoteSequence.Length; i++) {
+            correctNoteSequence[i] = Random.Range(0, Notes.Length);
+        }
+    }
+
+
+    void ClampSequence() {
+        for (int i = 0; i < correctNoteSequence.Length; i++) {
+            correctNoteSequence[i] = Mathf.Clamp(correctNoteSequence[i], 0, Notes.Length - 1);
+        }
+    }
+
+    void RestartSequence() {        
+        sequenceIndex = 0;
+    }
+
+    void PlayNote(int index) {
+        if (!canPlayNotes)
+            return;
+
+        if (index >= 0 && index < correctNoteSequence.Length) {
+            PlayNoteAudioClip(correctNoteSequence[index]);
+        }
+
+        if (gameFinished)
+            return;
+        
+        
+        if (index == correctNoteSequence[sequenceIndex]) {
+            sequenceIndex++;
+            if (sequenceIndex >= correctNoteSequence.Length) {
+                gameFinished = true;
+                UDP.Write(UDP_ToSend_CompleteSoundPuzzle);
+                Debug.Log("Sound puzzle completed.");
+            }            
+        } else {
+            StartCoroutine(IncorrectNoteCoroutine());
+        }
+    }
+
+    IEnumerator IncorrectNoteCoroutine() {
+        canPlayNotes = false;
+        RestartSequence();
+        Audio.PlaySFX(IncorrectNoteSound);
+        yield return new WaitForSeconds(0.1f);
+        Audio.PlaySFX(IncorrectNoteSound);
+        yield return new WaitForSeconds(1.5f);
+        StartCoroutine(PlaySampleSongCoroutine());
+    }
+
+    void PlayNoteAudioClip(int index) {
+        if (index >= 0 && index < Notes.Length) {
+            Audio.PlaySFX(Notes[index], false);
+            Audio.PlaySFX(Notes[index], false);
+            Audio.PlaySFX(Notes[index], false);
+            Audio.PlaySFX(Notes[index], false);
+            Audio.PlaySFX(Notes[index], false);
+        }       
+    }
+
+    IEnumerator PlaySampleSongCoroutine() {
+        canPlayNotes = false;
+        int n = 0;
+        while (n < correctNoteSequence.Length) {
+            PlayNoteAudioClip(correctNoteSequence[n]);
+            n++;
+            yield return new WaitForSeconds(TimeBetweenNotes);
+        }
+        canPlayNotes = true;
+        yield return null;
+    }
+
+    public void UDP_MessageReceived(string command) {
+        if (command != null && command.Length > 0) {
+            if (command.ToUpper() == UDP_ToReceive_StartSoundPuzzle.ToUpper()) {
+                
+                Audio.PlaySFX(WellSensorSound);
+                this.ActionAfterSecondDelay(3f, () => { BeginPuzzle(); });
+            }
+
+
+            bool matchesNoteScan = command.Substring(0, UDP_ToReceive_NoteScan.Length).ToUpper() == UDP_ToReceive_NoteScan.ToUpper();
+            if (matchesNoteScan) {
+                string toParse = command.Substring(UDP_ToReceive_NoteScan.Length);
+                string[] pieces = toParse.Split('_');
+                int n;
+                if (int.TryParse(pieces[0], out n)) {
+                    PlayNote(n);
+                }
+            }
+        }
+    }
+
+
+}

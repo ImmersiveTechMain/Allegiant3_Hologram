@@ -9,6 +9,7 @@ public class Gameflow : MonoBehaviour
     [Header("Components")]
     public SpellComboManager SpellManager;
     public WellManager WellManager;
+    public SoundPuzzle SoundPuzzle;
 
     
     
@@ -19,8 +20,7 @@ public class Gameflow : MonoBehaviour
         ResetGame();
 
 
-        SpellManager.OnFinalSpellSolved = WellManager.ShowParticlesInWell;
-        
+        //SpellManager.OnFinalSpellSolved = WellManager.ShowParticlesInWell;        
     }
 
 
@@ -31,6 +31,7 @@ public class Gameflow : MonoBehaviour
     public void UDP_MessageReceived(string command) {
 
         SpellManager.UDP_MessageReceived(command);
+        SoundPuzzle.UDP_MessageReceived(command);
         if (command != null && command.Length > 0) {
             
         }

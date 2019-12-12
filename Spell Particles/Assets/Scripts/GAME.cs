@@ -9,7 +9,7 @@ public class GAME : MonoBehaviour
     public float timerDuration = 60 * 30;
 
     [Header("Components")]
-    public Gameflow spellGameflow;
+    public Gameflow spellGameflow;    
     public PotionMixer_Scene.Gameflow potionMixerGameflow;
 
     [Header("UDPs")]
