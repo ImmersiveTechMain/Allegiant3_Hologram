@@ -1,11 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum Spells {
-    Fireball
-}
 
 public class SpellComboManager : MonoBehaviour {
 
@@ -119,7 +117,7 @@ public class SpellComboManager : MonoBehaviour {
         }
         if (spell == Fireball) { spell.ActionsOnAllParticles((p) => { p.Clear(); }); }
         if (spell.CanCombine) { StartCoroutine(MixSpellsCoroutine()); }
-        
+
     }
 
 
@@ -147,7 +145,7 @@ public class SpellComboManager : MonoBehaviour {
     IEnumerator MixSpellsCoroutine() {
         if (!FinalComboSpellIsFormed()) {
             if (Fireball.SystemsAreEnabled && Lightningball.SystemsAreEnabled) {
-                Fireball.canBeDisabled = Lightningball.canBeDisabled = false;                
+                Fireball.canBeDisabled = Lightningball.canBeDisabled = false;
                 //Merge to combo ball
                 SpellParticleSystem mixedSpellToActivate = GetMixedParticleSystem();
                 if (mixedSpellToActivate != null) {
@@ -228,7 +226,7 @@ public class SpellComboManager : MonoBehaviour {
     }
 
 
-    bool WaitForGlobalCooldown(bool goToCooldownOnCheck = true) {        
+    bool WaitForGlobalCooldown(bool goToCooldownOnCheck = true) {
         if (SpellScanOnCooldown) {
             return true;
         } else if (goToCooldownOnCheck) {
@@ -267,42 +265,93 @@ public class SpellComboManager : MonoBehaviour {
         }
     }
 
-    void CheckSpellPegs()
-    {
-        if (PegsAreActive(1, 5, 3, 4) || PegsAreActive(8, 12, 10, 11) || PegsAreActive(15, 19, 17, 18))
-        {
+    bool overflow1 = false;
+    bool overflow2 = false;
+    bool overflow3 = false;
+
+    public enum PegSector {
+        One,
+        Two,
+        Three
+    }
+
+    void CheckSpellPegs() {
+        overflow1 = CountActivePegsInSector(PegSector.One) > 4;
+        overflow2 = CountActivePegsInSector(PegSector.Two) > 4;
+        overflow3 = CountActivePegsInSector(PegSector.Three) > 4;
+
+
+
+        if (PegsAreActive(PegSector.One, 1, 5, 3, 4) || PegsAreActive(PegSector.Two, 8, 12, 10, 11) || PegsAreActive(PegSector.Three, 15, 19, 17, 18)) {
             //CONFETTI
             ToggleSpell(Confetti);
         }
-        if (PegsAreActive(6, 3, 5, 2) || PegsAreActive(13, 9, 12, 14) || PegsAreActive(20, 16, 19, 21))
-        {
+        if (PegsAreActive(PegSector.One, 6, 3, 5, 2) || PegsAreActive(PegSector.Two, 13, 9, 12, 14) || PegsAreActive(PegSector.Three, 20, 16, 19, 21)) {
             //CYCLONE
             ToggleSpell(Cyclone);
         }
-        if (PegsAreActive(6, 5, 4, 2) || PegsAreActive(13, 12, 11, 14) || PegsAreActive(20, 19, 18, 21))
-        {
+        if (PegsAreActive(PegSector.One, 6, 5, 4, 2) || PegsAreActive(PegSector.Two, 13, 12, 11, 14) || PegsAreActive(PegSector.Three, 20, 19, 18, 21)) {
             //SNOWSTORM
             ToggleSpell(Snowstorm);
         }
-        if (PegsAreActive(6, 7, 5, 3) || PegsAreActive(13, 14, 12, 10) || PegsAreActive(20, 21, 19, 17))
-        {
+        if (PegsAreActive(PegSector.One, 6, 7, 5, 3) || PegsAreActive(PegSector.Two, 13, 14, 12, 10) || PegsAreActive(PegSector.Three, 20, 21, 19, 17)) {
             //TORNADO
             ToggleSpell(Tornado);
         }
-        if (PegsAreActive(1, 6, 3, 4) || PegsAreActive(8, 13, 10, 11) || PegsAreActive(15, 20, 17, 18))
-        {
+        if (PegsAreActive(PegSector.One, 1, 6, 3, 4) || PegsAreActive(PegSector.Two, 8, 13, 10, 11) || PegsAreActive(PegSector.Three, 15, 20, 17, 18)) {
             //LIGHTNING
             ToggleSpell(Lightningball);
         }
-        if (PegsAreActive(1, 6, 4, 5) || PegsAreActive(8, 13, 11, 12) || PegsAreActive(15, 20, 18, 19))
-        {
+        if (PegsAreActive(PegSector.One, 1, 6, 4, 5) || PegsAreActive(PegSector.Two, 8, 13, 11, 12) || PegsAreActive(PegSector.Three, 15, 20, 18, 19)) {
             //FIREBALL
             ToggleSpell(Fireball);
         }
     }
 
-    bool PegsAreActive(int a, int b, int c, int d) {
-        return PegIsActive(a) && PegIsActive(b) && PegIsActive(c) && PegIsActive(d);
+    int[] SortedInts(params int[] ints) {
+        int[] intsToSort = ints;
+        Array.Sort(intsToSort);
+        return intsToSort;
+    }
+
+    int CountActivePegsInSector(PegSector sector) {
+        int count = 0;
+        int sectorLength = 7;
+        for (int i = 0; i < sectorLength; i++) {
+            if (pegBooleans[((int)sector) * sectorLength + i])
+                count++;
+        }
+
+        return count;
+    }
+
+
+
+    bool PegsAreActive(PegSector sector, int a, int b, int c, int d) {
+        //string numbers = a + ", " + b + ", " + c + ", " + d;
+        bool pegsActive = PegIsActive(a) && PegIsActive(b) && PegIsActive(c) && PegIsActive(d);
+        bool sectorOverflow;
+        switch (sector) {
+            case PegSector.One:
+                sectorOverflow = overflow1;
+                break;
+            case PegSector.Two:
+                sectorOverflow = overflow2;
+                break;
+            case PegSector.Three:
+                sectorOverflow = overflow3;
+                break;
+            default:
+                sectorOverflow = false;
+                break;
+        }
+        
+
+        if (sectorOverflow && pegsActive) {            
+            return false;
+        } else {
+            return pegsActive;
+        }
     }
 
     bool PegIsActive(int index) {
