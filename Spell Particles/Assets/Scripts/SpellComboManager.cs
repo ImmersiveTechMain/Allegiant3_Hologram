@@ -68,6 +68,7 @@ public class SpellComboManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (Time.frameCount % 5 == 0 && pegBooleans != null) { CheckSpellPegs(); }
         ReceiveInputs();
     }
 
@@ -255,7 +256,7 @@ public class SpellComboManager : MonoBehaviour {
 
     public void UDP_MessageReceived(string command) {
         if (command != null && command.Length > 0) {
-            bool matchesSpellPeg = command.Substring(0, UDP_ToReceive_SpellPegs.Length).ToUpper() == UDP_ToReceive_SpellPegs.ToUpper();
+            bool matchesSpellPeg = command.Length >= UDP_ToReceive_SpellPegs.Length && command.Substring(0, UDP_ToReceive_SpellPegs.Length).ToUpper() == UDP_ToReceive_SpellPegs.ToUpper();
             if (matchesSpellPeg) {
                 string toParse = command.Substring(UDP_ToReceive_SpellPegs.Length);
                 string[] pieces = toParse.Split('_');

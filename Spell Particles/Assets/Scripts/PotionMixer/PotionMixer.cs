@@ -105,6 +105,18 @@ public class PotionMixer : MonoBehaviour
         }
     }
 
+    public Potion GetPotionByName(string name)
+    {
+        if (potions != null)
+        {
+            for (int i = 0; i < potions.Length; i++)
+            {
+                if (potions[i].name.ToLower() == name.ToLower()) { return potions[i]; }
+            }
+        }
+        return null;
+    }
+
     public Ingredient GetIngredientlByUdpID(string UdpID)
     {
         if (!string.IsNullOrEmpty(UdpID) && extracts != null)
