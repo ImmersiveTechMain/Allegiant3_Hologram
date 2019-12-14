@@ -119,10 +119,12 @@ public class SpellParticleSystem : MonoBehaviour {
             OnEnabled();
         }
         if (_SystemsAreEnabled && AutoDisableTime > 0f) {
-            StartCoroutine(AutoDisable(AutoDisableTime));
+            if (localAutoResetCoroutine != null) { StopCoroutine(localAutoResetCoroutine); localAutoResetCoroutine = null; }
+            localAutoResetCoroutine = StartCoroutine(AutoDisable(AutoDisableTime));
         }
     }
 
+    Coroutine localAutoResetCoroutine = null;
     IEnumerator AutoDisable(float delay) {
         yield return new WaitForSeconds(delay);
         if (canBeDisabled) {
@@ -145,12 +147,13 @@ public class SpellParticleSystem : MonoBehaviour {
         if (SpellScanOnCooldown) {
             return true;
         } else {
-            StartCoroutine(SpellScanCooldownCoroutine());
+            if (localCooldownCoroutine != null) { StopCoroutine(localCooldownCoroutine); localCooldownCoroutine = null; }
+            localCooldownCoroutine = StartCoroutine(SpellScanCooldownCoroutine());
             return false;
         }
     }
 
-
+    Coroutine localCooldownCoroutine = null;
     IEnumerator SpellScanCooldownCoroutine() {
         SpellScanOnCooldown = true;
         yield return new WaitForSeconds(SpellScanCooldown);

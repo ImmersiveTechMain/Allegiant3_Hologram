@@ -61,14 +61,29 @@ namespace PotionMixer_Scene
             }
 
             UIPotionFound.SetKeyPotionsLogo(keyPotions.Length, keyPotionsScanned);
-            
+
             if (allCompleted)
             {
                 potionMixerPuzzleCompleted = true;
-                this.ActionAfterSecondDelay(UIPotionFound.duration, () => { UIPotionFound.SetKeyPotionsLogo_Numbers(7, 3, 5); });
-                UDP.Write(UDP_KeyPotionsScanned);
+                this.ActionAfterSecondDelay(UIPotionFound.duration, () =>
+                {
+                    UIPotionFound.MoveKeyPotionSectionToCenter(() =>
+                    {
+                        this.ActionAfterSecondDelay(0.6f, () =>
+                        {
+                            UIPotionFound.SetKeyPotionsLogo_Numbers(7);
+                            this.ActionAfterSecondDelay(0.6f, () =>
+                            {
+                                UIPotionFound.SetKeyPotionsLogo_Numbers(7, 3);
+                                this.ActionAfterSecondDelay(0.6f, () => { UIPotionFound.SetKeyPotionsLogo_Numbers(7, 3, 5); });
+                            });
+                        });
+                    });
+                });
             }
+            UDP.Write(UDP_KeyPotionsScanned);
         }
+
 
         public void Reset()
         {

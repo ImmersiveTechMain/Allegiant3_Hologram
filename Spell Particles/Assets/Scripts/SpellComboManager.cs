@@ -106,6 +106,13 @@ public class SpellComboManager : MonoBehaviour {
         if (spell.SpellScanOnCooldown)
             return;
 
+        if (spell == Fireball && (FireTornado.SystemsAreEnabled || LightningFireball.SystemsAreEnabled))
+            return;
+        if (spell == Lightningball && (LightningTornado.SystemsAreEnabled || LightningFireball.SystemsAreEnabled))
+            return;
+        if (spell == Tornado && (FireTornado.SystemsAreEnabled || LightningTornado.SystemsAreEnabled))
+            return;
+
         if (spell.SpellShape == SpellShape.Ball) {
             if (LightningFireball.SystemsAreEnabled)
                 return;

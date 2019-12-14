@@ -18895,7 +18895,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313185743}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -26724,8 +26724,8 @@ MonoBehaviour:
   SpellShape: 2
   CanCombine: 0
   SystemsAreEnabled: 0
-  AutoDisableTime: 9.5
-  SpellScanCooldown: 8
+  AutoDisableTime: 8.5
+  SpellScanCooldown: 9.5
   DebugKey: 115
   BirthEffects: []
   DeathEffects: []
@@ -39896,7 +39896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &576993982
 Transform:
   m_ObjectHideFlags: 0
@@ -39945,8 +39945,8 @@ MonoBehaviour:
   SpellShape: 2
   CanCombine: 0
   SystemsAreEnabled: 0
-  AutoDisableTime: 9.5
-  SpellScanCooldown: 8
+  AutoDisableTime: 8.5
+  SpellScanCooldown: 9.5
   DebugKey: 121
   BirthEffects: []
   DeathEffects: []
@@ -64769,8 +64769,8 @@ MonoBehaviour:
   SpellShape: 0
   CanCombine: 1
   SystemsAreEnabled: 0
-  AutoDisableTime: 9.5
-  SpellScanCooldown: 8
+  AutoDisableTime: 8.5
+  SpellScanCooldown: 9.5
   DebugKey: 108
   BirthEffects:
   - {fileID: 3259660867569239968, guid: dcb4148bc30e9734caac182eb601f3a0, type: 3}
@@ -81933,8 +81933,8 @@ MonoBehaviour:
   SpellShape: 2
   CanCombine: 0
   SystemsAreEnabled: 0
-  AutoDisableTime: 9.5
-  SpellScanCooldown: 8
+  AutoDisableTime: 8.5
+  SpellScanCooldown: 9.5
   DebugKey: 99
   BirthEffects: []
   DeathEffects: []
@@ -87091,8 +87091,8 @@ MonoBehaviour:
   SpellShape: 0
   CanCombine: 1
   SystemsAreEnabled: 0
-  AutoDisableTime: 9.5
-  SpellScanCooldown: 8
+  AutoDisableTime: 8.5
+  SpellScanCooldown: 9.5
   DebugKey: 102
   BirthEffects:
   - {fileID: 3765089245048513870, guid: 63aefe355afba3f42877566b0a7a4e24, type: 3}
@@ -87343,7 +87343,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272748493}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -111460,11 +111460,11 @@ RectTransform:
   m_Father: {fileID: 1746656746}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 370}
   m_SizeDelta: {x: 500, y: 100}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1571932260
 GameObject:
   m_ObjectHideFlags: 0
@@ -117793,8 +117793,8 @@ MonoBehaviour:
   SpellShape: 1
   CanCombine: 1
   SystemsAreEnabled: 0
-  AutoDisableTime: 9.5
-  SpellScanCooldown: 8
+  AutoDisableTime: 8.5
+  SpellScanCooldown: 9.5
   DebugKey: 116
   BirthEffects: []
   DeathEffects: []
@@ -124346,6 +124346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e499a502d9a144f4f8876a7c295cabe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyPotionsToCenterDuration: 2
   entryDuration: 2
   exitDuration: 0.18
   duration: 6
@@ -124358,6 +124359,7 @@ MonoBehaviour:
   light: {fileID: 1145937061}
   blackBorder: {fileID: 383761494}
   sparks: {fileID: 911986027}
+  keyPotionsSection: {fileID: 1567729373}
   originalKeyPotionLogoHolder:
     holder: {fileID: 1341742151}
     background: {fileID: 1380151547}
@@ -125210,6 +125212,7 @@ MonoBehaviour:
   - WELL_NOTE_4
   UDP_ToReceive_NoteScan: MUSIC_NOTE_
   UDP_ToSend_CompleteSoundPuzzle: SOLVED_PZ08
+  UDP_ToSend_CompleteWell: SOLVED_PZ06
   Notes:
   - {fileID: 8300000, guid: 3bf208b00c32eaa489730699a30d9a96, type: 3}
   - {fileID: 8300000, guid: 6b245296e94f09b4c91773ba3f0f009c, type: 3}

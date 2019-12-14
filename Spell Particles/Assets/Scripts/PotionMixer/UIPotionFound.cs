@@ -6,6 +6,7 @@ using TMPro;
 
 public class UIPotionFound : MonoBehaviour
 {
+    public float keyPotionsToCenterDuration = 2;
     public float entryDuration = 2;
     public float exitDuration = 1;
     public float duration = 6;
@@ -18,7 +19,7 @@ public class UIPotionFound : MonoBehaviour
     public new Image light;
     public Image blackBorder;
     public SparkEffect_UI sparks;
-
+    public RectTransform keyPotionsSection;
     public KeyPotionLogo originalKeyPotionLogoHolder;
 
     KeyPotionLogo[] keyPotionLogos;
@@ -70,7 +71,7 @@ public class UIPotionFound : MonoBehaviour
                 {
                     float N = n * n;
                     float Sin_N = Mathf.Sin((N * Mathf.PI) + Mathf.PI) + 1;
-                    _holder.transform.localRotation = Quaternion.Lerp(Quaternion.Euler(0, -90, 0), Quaternion.Euler(0,0,0), Sin_N);
+                    _holder.transform.localRotation = Quaternion.Lerp(Quaternion.Euler(0, -90, 0), Quaternion.Euler(0, 0, 0), Sin_N);
                     if (!swapDone && N >= 0.5) { _logo.Transparency(0); swapDone = true; _bg.color = Color.white; _text.Transparency(1); }
                 });
 
@@ -102,6 +103,22 @@ public class UIPotionFound : MonoBehaviour
     {
         Hide();
     }
+
+
+    public void MoveKeyPotionSectionToCenter(System.Action then = null)
+    {
+        Vector2 initialPos = keyPotionsSection.anchoredPosition;
+        Vector2 initialSize = keyPotionsSection.sizeDelta;
+        Vector2 finalSize = initialSize;
+        finalSize.y = 130;
+        this.InterpolateCoroutine(keyPotionsToCenterDuration, (n) =>
+        {
+            float N = n * n;
+            keyPotionsSection.sizeDelta = Vector2.Lerp(initialSize, finalSize, N);
+            keyPotionsSection.anchoredPosition = Vector2.Lerp(initialPos, Vector2.zero, N);
+        }, then);
+    }
+
 
     public void SetKeyPotionsLogo_Numbers(params int[] numbers)
     {
