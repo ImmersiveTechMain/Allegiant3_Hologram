@@ -20,6 +20,13 @@ public class SpellComboManager : MonoBehaviour {
     public string UDP_ToReceive_SpellPegs = "SPELL_";
     public string UDP_ToSend_CompleteFinalSpell = "FINAL_SPELL_COMPLETE";
 
+    [Header("Sound Effects")]    
+    public AudioClip SFX_SpellCombined;
+    public AudioClip SFX_FinalSpellCombined;
+    public AudioClip SFX_WinSpellPuzzle;
+    public AudioClip SFX_ThrowProjectile;
+    public AudioClip SFX_ProjectileImpact;
+
     [Header("Settings")]
     public Vector3 PrimaryProjectilePosition = new Vector3(0f, 11f, -20f);
     public Vector3 SecondaryProjectileOffset = new Vector3(4f, 0f, 0f);
@@ -119,12 +126,15 @@ public class SpellComboManager : MonoBehaviour {
             spell.transform.position = (ballsActive == 1 && !spell.SystemsAreEnabled ? PrimaryProjectilePosition + SecondaryProjectileOffset : PrimaryProjectilePosition);
         }
         spell.EnableSystems(!spell.SystemsAreEnabled);
+        Audio.PlaySFX(spell.SFX_Activation);
         if (spell.SystemsAreEnabled) {
             spell.WaitForCooldown();
             WaitForGlobalCooldown();
         }
         if (spell == Fireball) { spell.ActionsOnAllParticles((p) => { p.Clear(); }); }
-        if (spell.CanCombine) { StartCoroutine(MixSpellsCoroutine()); }
+        if (spell.CanCombine) {
+            StartCoroutine(MixSpellsCoroutine());
+        }
 
     }
 
@@ -160,7 +170,10 @@ public class SpellComboManager : MonoBehaviour {
                     yield return new WaitForSeconds(1.5f);
                     ThrowProjectileAtPosition(Fireball, PrimaryProjectilePosition, ProjectileThrowDuration);
                     ThrowProjectileAtPosition(Lightningball, PrimaryProjectilePosition, ProjectileThrowDuration);
+                    Audio.PlaySFX(SFX_ThrowProjectile);
                     yield return new WaitForSeconds(ProjectileThrowDuration);
+                    Audio.PlaySFX(SFX_SpellCombined);
+                    Audio.PlaySFX(SFX_ProjectileImpact);
                     DisableAllSpellsExcept(mixedSpellToActivate);
                     mixedSpellToActivate.transform.position = PrimaryProjectilePosition;
                     mixedSpellToActivate.EnableSystems(true);
@@ -180,7 +193,10 @@ public class SpellComboManager : MonoBehaviour {
                 SpellParticleSystem mixedSpellToActivate = GetMixedParticleSystem();
                 mixedSpellToActivate.canBeDisabled = false;
                 ThrowProjectileAtPosition(GetActiveBallSpell(), Vector3.zero, ProjectileThrowDuration);
+                Audio.PlaySFX(SFX_ThrowProjectile);
                 yield return new WaitForSeconds(ProjectileThrowDuration);
+                Audio.PlaySFX(SFX_SpellCombined);
+                Audio.PlaySFX(SFX_ProjectileImpact);
                 DisableAllSpellsExcept(mixedSpellToActivate);
                 mixedSpellToActivate.EnableSystems(true);
             }
@@ -257,7 +273,14 @@ public class SpellComboManager : MonoBehaviour {
 
     void CompleteFinalSpell() {
         OnFinalSpellSolved();
-        UDP.Write(UDP_ToSend_CompleteFinalSpell);
+        this.ActionAfterSecondDelay(0.5f, () => {
+            Audio.PlaySFX(SFX_FinalSpellCombined);
+        });
+        this.ActionAfterSecondDelay(3.00f, () => {
+            Audio.PlaySFX(SFX_WinSpellPuzzle);
+            UDP.Write(UDP_ToSend_CompleteFinalSpell);
+        });
+        
     }
 
 

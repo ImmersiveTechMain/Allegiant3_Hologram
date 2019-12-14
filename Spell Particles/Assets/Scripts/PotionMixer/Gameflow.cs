@@ -80,8 +80,9 @@ namespace PotionMixer_Scene
                         });
                     });
                 });
+                UDP.Write(UDP_KeyPotionsScanned);
             }
-            UDP.Write(UDP_KeyPotionsScanned);
+            
         }
 
 

@@ -29,6 +29,7 @@ public class SpellParticleSystem : MonoBehaviour {
     public float AutoDisableTime = 0f;
     public float SpellScanCooldown = 8f;
     public KeyCode DebugKey = KeyCode.None;
+    public AudioClip SFX_Activation;
 
     [Header("Prefab Effects")]
     public GameObject[] BirthEffects;

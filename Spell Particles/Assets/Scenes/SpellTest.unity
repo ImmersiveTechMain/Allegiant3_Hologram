@@ -26727,6 +26727,7 @@ MonoBehaviour:
   AutoDisableTime: 8.5
   SpellScanCooldown: 9.5
   DebugKey: 115
+  SFX_Activation: {fileID: 8300000, guid: d27a4e7afa36c4704acce2bc7bac643d, type: 3}
   BirthEffects: []
   DeathEffects: []
 --- !u!4 &492941050
@@ -39948,6 +39949,7 @@ MonoBehaviour:
   AutoDisableTime: 8.5
   SpellScanCooldown: 9.5
   DebugKey: 121
+  SFX_Activation: {fileID: 8300000, guid: 03f7a747fd09447b09f7ab746c95ce53, type: 3}
   BirthEffects: []
   DeathEffects: []
 --- !u!1 &577132834
@@ -44312,6 +44314,7 @@ MonoBehaviour:
   AutoDisableTime: 0
   SpellScanCooldown: 8
   DebugKey: 0
+  SFX_Activation: {fileID: 0}
   BirthEffects: []
   DeathEffects: []
 --- !u!1 &662344476
@@ -54899,6 +54902,7 @@ MonoBehaviour:
   AutoDisableTime: 0
   SpellScanCooldown: 8
   DebugKey: 0
+  SFX_Activation: {fileID: 0}
   BirthEffects: []
   DeathEffects: []
 --- !u!1 &797858007
@@ -55565,6 +55569,7 @@ MonoBehaviour:
   AutoDisableTime: 0
   SpellScanCooldown: 8
   DebugKey: 0
+  SFX_Activation: {fileID: 0}
   BirthEffects: []
   DeathEffects: []
 --- !u!1 &810790518
@@ -64772,6 +64777,7 @@ MonoBehaviour:
   AutoDisableTime: 8.5
   SpellScanCooldown: 9.5
   DebugKey: 108
+  SFX_Activation: {fileID: 8300000, guid: 9aaf4ce8ca8374e5c9daaaea4d8318fb, type: 3}
   BirthEffects:
   - {fileID: 3259660867569239968, guid: dcb4148bc30e9734caac182eb601f3a0, type: 3}
   DeathEffects:
@@ -81936,6 +81942,7 @@ MonoBehaviour:
   AutoDisableTime: 8.5
   SpellScanCooldown: 9.5
   DebugKey: 99
+  SFX_Activation: {fileID: 8300000, guid: 1aa86acf361e94dfabf9d8317c92f424, type: 3}
   BirthEffects: []
   DeathEffects: []
 --- !u!4 &1153384711
@@ -82086,6 +82093,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UDP_ToReceive_SpellPegs: SPELL_
   UDP_ToSend_CompleteFinalSpell: SOLVED_PZ01
+  SFX_SpellCombined: {fileID: 8300000, guid: 3296ebbda23304a72960cb6502d787dd, type: 3}
+  SFX_FinalSpellCombined: {fileID: 8300000, guid: d3467e763cb3b4abc91bb762dd43085e,
+    type: 3}
+  SFX_WinSpellPuzzle: {fileID: 8300000, guid: 637a555bd05d246a6a9e7704c67e88a0, type: 3}
+  SFX_ThrowProjectile: {fileID: 8300000, guid: 839ed51b3d35545f5baae8131e976de8, type: 3}
+  SFX_ProjectileImpact: {fileID: 8300000, guid: a065d1554b3b8490b8b5b175c5886fa1,
+    type: 3}
   PrimaryProjectilePosition: {x: 0, y: 13, z: -20}
   SecondaryProjectileOffset: {x: 5, y: 0, z: 0}
   ProjectileThrowDuration: 0.5
@@ -87094,6 +87108,7 @@ MonoBehaviour:
   AutoDisableTime: 8.5
   SpellScanCooldown: 9.5
   DebugKey: 102
+  SFX_Activation: {fileID: 8300000, guid: 4fe2671876127497783f5abede2ddc97, type: 3}
   BirthEffects:
   - {fileID: 3765089245048513870, guid: 63aefe355afba3f42877566b0a7a4e24, type: 3}
   DeathEffects:
@@ -117796,6 +117811,7 @@ MonoBehaviour:
   AutoDisableTime: 8.5
   SpellScanCooldown: 9.5
   DebugKey: 116
+  SFX_Activation: {fileID: 8300000, guid: 0bfc2cd6211a8424eaffcf5d0358e759, type: 3}
   BirthEffects: []
   DeathEffects: []
 --- !u!1 &1703327622
@@ -150765,6 +150781,7 @@ MonoBehaviour:
   AutoDisableTime: 0
   SpellScanCooldown: 8
   DebugKey: 0
+  SFX_Activation: {fileID: 0}
   BirthEffects:
   - {fileID: 3765089245048513870, guid: 63aefe355afba3f42877566b0a7a4e24, type: 3}
   - {fileID: 3259660867569239968, guid: dcb4148bc30e9734caac182eb601f3a0, type: 3}

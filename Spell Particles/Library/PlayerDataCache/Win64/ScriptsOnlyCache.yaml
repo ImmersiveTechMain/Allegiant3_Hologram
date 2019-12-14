@@ -341,7 +341,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13658}
     - Class: 114
-      Script: {instanceID: 31670}
+      Script: {instanceID: 43332}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -365,8 +365,6 @@ ScriptsOnlyBuild:
     - Class: 225
       Script: {instanceID: 0}
     - Class: 328
-      Script: {instanceID: 0}
-    - Class: 329
       Script: {instanceID: 0}
     - Class: 73398921
       Script: {instanceID: 0}
@@ -701,7 +699,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: e2f13f414a767b6ce0bfe7ec15ff5798
+      Hash: 45e17081a3f2c546f49f7a15324a2bb7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIPotionFound
@@ -1019,7 +1017,7 @@ ScriptsOnlyBuild:
     className: VisualEnvironment
   - hash:
       serializedVersion: 2
-      Hash: 9d2521f931f18a3a1fb9640eede9679d
+      Hash: 05b48c22eaa55bfe5dcdf1ec4f92781c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpellParticleSystem
@@ -1337,7 +1335,7 @@ ScriptsOnlyBuild:
     className: ColorLookup
   - hash:
       serializedVersion: 2
-      Hash: 3e6c94888aaecac1e750316158a5d88a
+      Hash: 043d57b3bc5cc75a7defcf9d041f900a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpellComboManager
@@ -1806,4 +1804,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SpellTest.unity
-  playerPath: C:/Users/skeet/Documents/Allegiant3_Hologram/Builds/Dec13_Spells-v27/Allegiant3_Spells_v27.exe
+  playerPath: C:/Users/ZMyers/Documents/UnityProjects/A3/Development Builds/Dec13_Spells_v30/Allegiant3_Spells_v30.exe
