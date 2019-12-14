@@ -19,8 +19,9 @@ public class SpellComboManager : MonoBehaviour {
     //public string UDP_ToReceive_OnScannedConfetti = "SPELL_CONFETTI";
     public string UDP_ToReceive_SpellPegs = "SPELL_";
     public string UDP_ToSend_CompleteFinalSpell = "FINAL_SPELL_COMPLETE";
+    public string UDP_ToSend_CompleteFinalCyclone = "SOLVED_PZ09";
 
-    [Header("Sound Effects")]    
+    [Header("Sound Effects")]
     public AudioClip SFX_SpellCombined;
     public AudioClip SFX_FinalSpellCombined;
     public AudioClip SFX_WinSpellPuzzle;
@@ -71,6 +72,7 @@ public class SpellComboManager : MonoBehaviour {
         }
 
         FireLightningTornado.OnEnabled = CompleteFinalSpell;
+        Cyclone.OnEnabled = AttemptCompleteCyclonePuzzle;
     }
 
     // Update is called once per frame
@@ -276,11 +278,37 @@ public class SpellComboManager : MonoBehaviour {
         this.ActionAfterSecondDelay(0.5f, () => {
             Audio.PlaySFX(SFX_FinalSpellCombined);
         });
-        this.ActionAfterSecondDelay(3.00f, () => {
+        this.ActionAfterSecondDelay(3.60f, () => {
             Audio.PlaySFX(SFX_WinSpellPuzzle);
             UDP.Write(UDP_ToSend_CompleteFinalSpell);
         });
-        
+        this.ActionAfterSecondDelay(11.00f, () => {
+            PutAllSpellsOnCooldown();
+        });
+    }
+
+    public void PutAllSpellsOnCooldown() {
+        foreach (SpellParticleSystem spell in AllSpellSystems) {
+            spell.SpellScanOnCooldown = true;
+        }
+    }
+
+    bool CanCompleteSuperCyclone = false;
+    public void AllowCycloneAsFinalSpell() {
+        FireLightningTornado.EnableSystems(false, false);
+        Audio.PlaySFX(SFX_WinSpellPuzzle);
+        Cyclone.SpellScanOnCooldown = false;
+        CanCompleteSuperCyclone = true;
+    }
+
+    public void AttemptCompleteCyclonePuzzle() {
+        if (CanCompleteSuperCyclone) {
+            Audio.PlaySFX(SFX_FinalSpellCombined);
+            this.ActionAfterSecondDelay(3.1f, () => {
+                Audio.PlaySFX(SFX_WinSpellPuzzle);
+            });
+            UDP.Write(UDP_ToSend_CompleteFinalCyclone);
+        }
     }
 
 
@@ -376,9 +404,9 @@ public class SpellComboManager : MonoBehaviour {
                 sectorOverflow = false;
                 break;
         }
-        
 
-        if (sectorOverflow && pegsActive) {            
+
+        if (sectorOverflow && pegsActive) {
             return false;
         } else {
             return pegsActive;

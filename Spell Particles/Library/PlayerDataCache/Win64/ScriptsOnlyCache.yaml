@@ -1335,7 +1335,7 @@ ScriptsOnlyBuild:
     className: ColorLookup
   - hash:
       serializedVersion: 2
-      Hash: 043d57b3bc5cc75a7defcf9d041f900a
+      Hash: 065d848cd1857864d00cbf12f82ec92d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpellComboManager
@@ -1804,4 +1804,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SpellTest.unity
-  playerPath: C:/Users/ZMyers/Documents/UnityProjects/A3/Development Builds/Dec13_Spells_v30/Allegiant3_Spells_v30.exe
+  playerPath: C:/Users/ZMyers/Documents/UnityProjects/A3/Development Builds/Dec13_Spells_v31/Allegiant3_Spells_v31.exe

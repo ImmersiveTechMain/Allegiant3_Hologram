@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SoundPuzzle : MonoBehaviour
 {
+    public delegate void CALLBACK();
+    public CALLBACK OnPuzzleComplete = delegate () { };
+
+
     bool[] startPuzzleRequiredNotes = null;
     public string[] UDP_ToReceive_StartSoundPuzzle;
     public string UDP_ToReceive_NoteScan = "NOTE_";
@@ -98,6 +102,7 @@ public class SoundPuzzle : MonoBehaviour
                 gameFinished = true;
                 UDP.Write(UDP_ToSend_CompleteSoundPuzzle);
                 Debug.Log("Sound puzzle completed.");
+                OnPuzzleComplete();
             }
         }
         else

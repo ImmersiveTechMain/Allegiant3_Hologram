@@ -18,7 +18,7 @@ public class Gameflow : MonoBehaviour
     public void Setup()
     {
         ResetGame();
-
+        SoundPuzzle.OnPuzzleComplete = SpellManager.AllowCycloneAsFinalSpell;
 
         //SpellManager.OnFinalSpellSolved = WellManager.ShowParticlesInWell;        
     }

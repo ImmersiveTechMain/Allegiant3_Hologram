@@ -35,6 +35,8 @@ public class GAME : MonoBehaviour
 
         isMagicRealmUnlocked = false;
 
+        
+
         OnMagicRealmUnlocked = potionMixerGameflow.OnMagicRealUnlocked;
         OnWellComplete = potionMixerGameflow.OnWellCompleted;
         gameTimer.OnTimerEnds = LoseGame;
