@@ -82093,6 +82093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UDP_ToReceive_SpellPegs: SPELL_
   UDP_ToSend_CompleteFinalSpell: SOLVED_PZ01
+  UDP_ToSend_CompleteFinalCyclone: SOLVED_PZ09
   SFX_SpellCombined: {fileID: 8300000, guid: 3296ebbda23304a72960cb6502d787dd, type: 3}
   SFX_FinalSpellCombined: {fileID: 8300000, guid: d3467e763cb3b4abc91bb762dd43085e,
     type: 3}
@@ -125229,6 +125230,11 @@ MonoBehaviour:
   UDP_ToReceive_NoteScan: MUSIC_NOTE_
   UDP_ToSend_CompleteSoundPuzzle: SOLVED_PZ08
   UDP_ToSend_CompleteWell: SOLVED_PZ06
+  ActivationNotes:
+  - {fileID: 8300000, guid: 7899c1ef705d14d1ea86b890e1710ec4, type: 3}
+  - {fileID: 8300000, guid: 7899c1ef705d14d1ea86b890e1710ec4, type: 3}
+  - {fileID: 8300000, guid: 7899c1ef705d14d1ea86b890e1710ec4, type: 3}
+  - {fileID: 8300000, guid: 94ef9952a4220419ab3ba955f54ab454, type: 3}
   Notes:
   - {fileID: 8300000, guid: 3bf208b00c32eaa489730699a30d9a96, type: 3}
   - {fileID: 8300000, guid: 6b245296e94f09b4c91773ba3f0f009c, type: 3}

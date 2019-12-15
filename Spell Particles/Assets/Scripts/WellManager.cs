@@ -7,6 +7,7 @@ public class WellManager : MonoBehaviour
 
     public CanvasGroup WellSpellCover;
 
+    
 
     public void ShowParticlesInWell() {
         StartCoroutine(ShowParticlesInWellCoroutine());
