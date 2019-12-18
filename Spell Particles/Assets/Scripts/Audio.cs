@@ -249,9 +249,9 @@ public class Audio : MonoBehaviour
 
     public static void DestroyAllSounds()
     {
-        if (MusicChannelsFolder != null) { Destroy(MusicChannelsFolder.gameObject); MusicChannelsFolder = null; MusicChannel = null; }
-        if (SFXChannelsFolder != null) { DestoyAllSFXChannels(); Destroy(SFXChannelsFolder.gameObject);  }
-        if (SpecialChannelsFolder != null) { Destroy(SpecialChannelsFolder.gameObject); SpecialChannel = null; SpecialChannel = null; }
+        if (MusicChannelsFolder != null) { DestroyImmediate(MusicChannelsFolder.gameObject); MusicChannelsFolder = null; MusicChannel = null; }
+        if (SFXChannelsFolder != null) { DestoyAllSFXChannels(); DestroyImmediate(SFXChannelsFolder.gameObject);  }
+        if (SpecialChannelsFolder != null) { DestroyImmediate(SpecialChannelsFolder.gameObject); SpecialChannel = null; SpecialChannel = null; }
         if (Instance != null)
         {
             Instance.CreateFolders();

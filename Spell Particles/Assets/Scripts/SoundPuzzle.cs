@@ -12,7 +12,8 @@ public class SoundPuzzle : MonoBehaviour {
     bool[] startPuzzleRequiredNotes = null;
     public string[] UDP_ToReceive_StartSoundPuzzle;
     public string UDP_ToReceive_NoteScan = "NOTE_";
-    public string UDP_ToSend_CompleteSoundPuzzle = "COMPLETED_SOUND_PUZZLE";
+    public string UDP_ToSend_CompleteSoundPuzzle = "SOLVED_PZ08";
+    public string UDP_ToReceive_Skip_CompleteSoundPuzzle = "SKIP_PZ08";
     public string UDP_ToSend_CompleteWell = "SOLVED_PZ06";
 
     [Header("4 Well Notes")]
@@ -23,6 +24,7 @@ public class SoundPuzzle : MonoBehaviour {
     public AudioClip IncorrectNoteSound;
 
     public float TimeBetweenNotes = 0.5f;
+    public int howManyInstancesOfTheNoteToPlayAtOnce = 1;
 
     public int[] correctNoteSequence;
     private int sequenceIndex = 0;
@@ -83,7 +85,7 @@ public class SoundPuzzle : MonoBehaviour {
         if (!canPlayNotes)
             return;
 
-        if (index >= 0 && index < correctNoteSequence.Length) {
+        if (index >= 0 && index < Notes.Length) {
             PlayNoteAudioClip(index);
         }
 
@@ -93,34 +95,41 @@ public class SoundPuzzle : MonoBehaviour {
 
         if (index == correctNoteSequence[sequenceIndex]) {
             sequenceIndex++;
-            if (sequenceIndex >= correctNoteSequence.Length) {
-                //WIN GAME
-                gameFinished = true;
-                UDP.Write(UDP_ToSend_CompleteSoundPuzzle);
-                Debug.Log("Sound puzzle completed.");
-                OnPuzzleComplete();
+            if (sequenceIndex >= correctNoteSequence.Length)
+            {
+                Win();
             }
         } else {
             StartCoroutine(IncorrectNoteCoroutine());
         }
     }
 
+    public void Win()
+    {
+        //WIN GAME
+        gameFinished = true;
+        UDP.Write(UDP_ToSend_CompleteSoundPuzzle);
+        UDP.Write(UDP_ToSend_CompleteSoundPuzzle, GAME.MAGIC_MIRROR_IP, GAME.MAGIC_MIRROR_PORT);
+        UDP.Write(UDP_ToSend_CompleteSoundPuzzle, GAME.WELL_IP, GAME.WELL_PORT);
+        GAME.MuteMusicVolumeTemporally(this, GAME.VideoDuration_PZ08);
+        Debug.Log("Sound puzzle completed.");
+        OnPuzzleComplete();
+    }
+
     IEnumerator IncorrectNoteCoroutine() {
         canPlayNotes = false;
         RestartSequence();
         Audio.PlaySFX(IncorrectNoteSound);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.1f); // you can make this function a void function and use this.ActionAfterSecondDelay( 0.1f, ()+>{ here what to do after 0.1 seconds; } ); ( so you dont have to use StartCoroutine )
         Audio.PlaySFX(IncorrectNoteSound);
-        StartCoroutine(PlaySampleSongCoroutine());
+        canPlayNotes = true;
+        //StartCoroutine(PlaySampleSongCoroutine()); // commented so no sequence repeated on fail. only the well shows you the sequence
     }
 
     void PlayNoteAudioClip(int index) {
         if (index >= 0 && index < Notes.Length) {
-            Audio.PlaySFX(Notes[index], false);
-            Audio.PlaySFX(Notes[index], false);
-            Audio.PlaySFX(Notes[index], false);
-            Audio.PlaySFX(Notes[index], false);
-            Audio.PlaySFX(Notes[index], false);
+            howManyInstancesOfTheNoteToPlayAtOnce = Mathf.Clamp(howManyInstancesOfTheNoteToPlayAtOnce, 1, int.MaxValue);
+            for (int i = 0; i < howManyInstancesOfTheNoteToPlayAtOnce; i++) { Audio.PlaySFX(Notes[index], howManyInstancesOfTheNoteToPlayAtOnce == 1); }
         }
     }
 
@@ -173,14 +182,17 @@ public class SoundPuzzle : MonoBehaviour {
 
             }
 
-
+            if (command.ToLower() == UDP_ToReceive_Skip_CompleteSoundPuzzle.ToLower())
+            {
+                Win();
+            }
 
             bool matchesNoteScan = command.Length >= UDP_ToReceive_NoteScan.Length && command.Substring(0, UDP_ToReceive_NoteScan.Length).ToUpper() == UDP_ToReceive_NoteScan.ToUpper();
             if (matchesNoteScan) {
                 string toParse = command.Substring(UDP_ToReceive_NoteScan.Length);
                 string[] pieces = toParse.Split('_');
                 int n;
-                if (int.TryParse(pieces[0], out n)) {
+                if (int.TryParse(pieces[0], out n) && --n >= 0) {
                     PlayNote(n);
                 }
             }

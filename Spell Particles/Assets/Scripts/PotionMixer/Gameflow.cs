@@ -14,6 +14,9 @@ namespace PotionMixer_Scene
 
         public string[] keyPotions;
 
+        [Header("Audio")]
+        public AudioClip SFX_PotionFound;
+        public AudioClip SFX_PuzzleCompleted;
         public AudioClip MUSIC_Bubbles;
         public AudioClip[] SFXs_Drops;
 
@@ -33,10 +36,13 @@ namespace PotionMixer_Scene
 
         public void Setup()
         {
-            Audio.MusicMasterVolume = 0.2f;
-            Audio.PlayMusic(MUSIC_Bubbles, true, true, 5);
-            Audio.MusicChannel.SetPitch(0.4f);
-            potionMixer.OnPotionMatchFound = (potion) => { if (!potionMixerPuzzleCompleted) { UIPotionFound.Show(potion); } };
+            Audio.PlaySpecial(MUSIC_Bubbles, true, true, 5);
+            Audio.AudioChannel channel = Audio.SpecialChannel;
+            channel.source.loop = true;
+            channel.SetVolume(0.2f);
+            channel.SetPitch(0.4f);
+
+            potionMixer.OnPotionMatchFound = (potion) => { if (!potionMixerPuzzleCompleted) { Audio.PlaySFX(SFX_PotionFound); UIPotionFound.Show(potion); } };
             potionMixer.OnPotionMatchFound += (potion) => { if (!potionMixerPuzzleCompleted) { CheckPotion(potion); } };
             potionMixer.OnExtractAdded = (extract) => { if (SFXs_Drops != null && SFXs_Drops.Length > 0) { Audio.PlaySFX(SFXs_Drops[Random.Range(0, SFXs_Drops.Length)]); } };
             UIPotionFound.SetKeyPotionsLogo(keyPotions.Length, new Sprite[keyPotions.Length]);
@@ -69,6 +75,7 @@ namespace PotionMixer_Scene
                 {
                     UIPotionFound.MoveKeyPotionSectionToCenter(() =>
                     {
+                        Audio.PlaySFX(SFX_PuzzleCompleted);
                         this.ActionAfterSecondDelay(0.6f, () =>
                         {
                             UIPotionFound.SetKeyPotionsLogo_Numbers(7);

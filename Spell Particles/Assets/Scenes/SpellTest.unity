@@ -14384,7 +14384,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1619152373}
   m_Father: {fileID: 1464930790}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14406,7 +14407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.098400824, g: 0, b: 0.29411766, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -40740,7 +40741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 250}
+  m_AnchoredPosition: {x: 0, y: 290}
   m_SizeDelta: {x: 705.1, y: 126.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &593586310
@@ -40792,8 +40793,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 120
-  m_fontSizeBase: 120
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -41688,10 +41689,15 @@ MonoBehaviour:
   timerDuration: 1800
   spellGameflow: {fileID: 1368614212}
   potionMixerGameflow: {fileID: 1834560203}
+  MUSIC_GameMusic: {fileID: 8300000, guid: d3c615794a991ce46b02d2399a8f68e3, type: 3}
   UDP_Receive_GameStart: GAME_START
   UDP_Receive_GameReset: GAME_RESET
   UDP_Receive_MagicRealmUnlocked: MAGIC_REALM_UNLOCKED
   UDP_Receive_WellComplete: WELL_COMPLETE
+  UDP_Receive_PZ05: SOLVED_PZ05
+  UDP_ToSend_GameFailed: GAME_FAIL
+  UDP_ToSend_GameStart: GAME_START
+  UDP_ToSend_GameReset: GAME_RESET
 --- !u!4 &614453947
 Transform:
   m_ObjectHideFlags: 0
@@ -43305,8 +43311,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 256, y: 256}
+  m_AnchoredPosition: {x: 0, y: 135}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &643411455
 MonoBehaviour:
@@ -66531,7 +66537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -250}
+  m_AnchoredPosition: {x: 0, y: -25}
   m_SizeDelta: {x: 1022.8, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &943311253
@@ -66583,8 +66589,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 110
-  m_fontSizeBase: 110
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -70141,7 +70147,7 @@ PrefabInstance:
     - target: {fileID: 3618664863463229744, guid: d8d35bd5691467f4cb3ce9af7310b37f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 135
       objectReference: {fileID: 0}
     - target: {fileID: 3618664863463229744, guid: d8d35bd5691467f4cb3ce9af7310b37f,
         type: 3}
@@ -81636,7 +81642,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 135}
   m_SizeDelta: {x: 1196.1, y: 1096.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1145937061
@@ -111478,7 +111484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 370}
+  m_AnchoredPosition: {x: 0, y: 400}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1571932260
@@ -113608,6 +113614,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsTemporary: 0
+--- !u!1 &1619152372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1619152373}
+  - component: {fileID: 1619152375}
+  - component: {fileID: 1619152374}
+  m_Layer: 5
+  m_Name: border
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1619152373
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619152372}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 209659669}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1619152374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619152372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.13041444, g: 0, b: 0.3584906, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 5953763285292134a9826dfb04ac15a3, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1619152375
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619152372}
+  m_CullTransparentMesh: 0
 --- !u!1 &1619267407
 GameObject:
   m_ObjectHideFlags: 0
@@ -124370,6 +124450,7 @@ MonoBehaviour:
   sizeModifier: 0.8
   maxLightTransparency: 0.18
   maxBlackBorderTransparency: 0.58
+  keyPotionsRevealNumbersPosition: 135
   titleLabel: {fileID: 593586310}
   potionNameLabel: {fileID: 943311253}
   icon: {fileID: 643411455}
@@ -125236,18 +125317,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7899c1ef705d14d1ea86b890e1710ec4, type: 3}
   - {fileID: 8300000, guid: 94ef9952a4220419ab3ba955f54ab454, type: 3}
   Notes:
-  - {fileID: 8300000, guid: 3bf208b00c32eaa489730699a30d9a96, type: 3}
-  - {fileID: 8300000, guid: 6b245296e94f09b4c91773ba3f0f009c, type: 3}
-  - {fileID: 8300000, guid: 03d2c3ecb8bd763438d3de1e6c937aed, type: 3}
-  - {fileID: 8300000, guid: 4a2ecf5c97d5d3b488bcf6524eb64258, type: 3}
-  - {fileID: 8300000, guid: 4215165f7906cc14388e37bb25e16d3d, type: 3}
-  - {fileID: 8300000, guid: 7d3417b47a6d108489ffeb28e5fe5e13, type: 3}
-  - {fileID: 8300000, guid: 0822b338987e4d048ac00392aa9dbcee, type: 3}
-  - {fileID: 8300000, guid: 72cb10d721ce0134a99316074626e460, type: 3}
+  - {fileID: 8300000, guid: 092694140de001c4f809f7385fe8338d, type: 3}
+  - {fileID: 8300000, guid: 357c64915b2b06e48bd71021f9e39114, type: 3}
+  - {fileID: 8300000, guid: 062fa43160515ab4ca5c17671fe5b391, type: 3}
+  - {fileID: 8300000, guid: bbc98954d7a3b8340b4b56e07f90fc6e, type: 3}
+  - {fileID: 8300000, guid: 0d90c0b2a5a16ae4eb0b47caefc30b62, type: 3}
+  - {fileID: 8300000, guid: 8a85e74d11898f640bfe00689b8f56e5, type: 3}
+  - {fileID: 8300000, guid: 9bd38286225e2fc4d95197ed02db14b4, type: 3}
+  - {fileID: 8300000, guid: b345e954afcb9864aaede2d2e5bba711, type: 3}
   WellSensorSound: {fileID: 8300000, guid: 135993b6472365242b1f969882255067, type: 3}
   IncorrectNoteSound: {fileID: 8300000, guid: 552df6679e82e854fb1b28a69b4eb813, type: 3}
-  TimeBetweenNotes: 0.4
-  correctNoteSequence: 0100000002000000040000000300000004000000050000000400000005000000
+  TimeBetweenNotes: 0.9
+  howManyInstancesOfTheNoteToPlayAtOnce: 1
+  correctNoteSequence: 0100000004000000050000000600000008000000
 --- !u!4 &1756665110
 Transform:
   m_ObjectHideFlags: 0
@@ -126609,7 +126691,7 @@ Transform:
   m_GameObject: {fileID: 1782650307}
   m_LocalRotation: {x: 0.00000023469329, y: 0.000000692904, z: -0.00000003306195,
     w: 1}
-  m_LocalPosition: {x: 38.397095, y: 8.1725645, z: -23.545921}
+  m_LocalPosition: {x: 38.397095, y: 7.93, z: -23.545921}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 453623906}
@@ -128748,10 +128830,12 @@ MonoBehaviour:
   - Dragon's Breath
   - Potion of Courage
   - Potion of Night
+  SFX_PotionFound: {fileID: 8300000, guid: cfc37579a8833444a91a900575abb537, type: 3}
+  SFX_PuzzleCompleted: {fileID: 8300000, guid: 637a555bd05d246a6a9e7704c67e88a0, type: 3}
   MUSIC_Bubbles: {fileID: 8300000, guid: 5500a8b29baf8ec4f84d2a641fb5342f, type: 3}
   SFXs_Drops:
-  - {fileID: 8300000, guid: ed5382454ee64cc4eb8f64e3d017cc04, type: 3}
-  - {fileID: 8300000, guid: 954ac275cc3cc9f4caec19c3f55aee3e, type: 3}
+  - {fileID: 8300000, guid: 1aa86acf361e94dfabf9d8317c92f424, type: 3}
+  - {fileID: 8300000, guid: 77fb6ebe5acff4bdb88c7bdb354e085b, type: 3}
   UIPotionFound: {fileID: 1746656747}
   potionMixer: {fileID: 1091787486}
   videoPlayer_magicMirror: {fileID: 293036047}
@@ -137348,7 +137432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd129f9f46cb8b2478c700d8d6c0c80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicVolume: 1
+  MusicVolume: 0.15
   SFXVolume: 1
 --- !u!4 &2010853964
 Transform:

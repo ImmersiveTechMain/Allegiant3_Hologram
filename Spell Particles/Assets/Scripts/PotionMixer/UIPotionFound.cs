@@ -13,6 +13,7 @@ public class UIPotionFound : MonoBehaviour
     public float sizeModifier = 0.8f;
     public float maxLightTransparency = 0.18f;
     public float maxBlackBorderTransparency = 0.58f;
+    public float keyPotionsRevealNumbersPosition;
     public TextMeshProUGUI titleLabel;
     public TextMeshProUGUI potionNameLabel;
     public Image icon;
@@ -115,7 +116,7 @@ public class UIPotionFound : MonoBehaviour
         {
             float N = n * n;
             keyPotionsSection.sizeDelta = Vector2.Lerp(initialSize, finalSize, N);
-            keyPotionsSection.anchoredPosition = Vector2.Lerp(initialPos, Vector2.zero, N);
+            keyPotionsSection.anchoredPosition = Vector2.Lerp(initialPos, Vector2.up * keyPotionsRevealNumbersPosition, N);
         }, then);
     }
 
