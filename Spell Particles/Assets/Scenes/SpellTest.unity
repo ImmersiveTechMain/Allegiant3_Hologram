@@ -125310,6 +125310,7 @@ MonoBehaviour:
   - WELL_NOTE_4
   UDP_ToReceive_NoteScan: MUSIC_NOTE_
   UDP_ToSend_CompleteSoundPuzzle: SOLVED_PZ08
+  UDP_ToReceive_Skip_CompleteSoundPuzzle: SKIP_PZ08
   UDP_ToSend_CompleteWell: SOLVED_PZ06
   ActivationNotes:
   - {fileID: 8300000, guid: 7899c1ef705d14d1ea86b890e1710ec4, type: 3}
@@ -125327,6 +125328,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b345e954afcb9864aaede2d2e5bba711, type: 3}
   WellSensorSound: {fileID: 8300000, guid: 135993b6472365242b1f969882255067, type: 3}
   IncorrectNoteSound: {fileID: 8300000, guid: 552df6679e82e854fb1b28a69b4eb813, type: 3}
+  cooldownBetweenUserInputedNotes: 1.2
   TimeBetweenNotes: 0.9
   howManyInstancesOfTheNoteToPlayAtOnce: 1
   correctNoteSequence: 0100000004000000050000000600000008000000

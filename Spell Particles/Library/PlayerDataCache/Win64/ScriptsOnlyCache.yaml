@@ -341,7 +341,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13658}
     - Class: 114
-      Script: {instanceID: 32422}
+      Script: {instanceID: 32412}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -387,7 +387,7 @@ ScriptsOnlyBuild:
     className: ExponentialFog
   - hash:
       serializedVersion: 2
-      Hash: b0d24dae1c5304bea31df7736deade2e
+      Hash: 196522ac303445a3b39a8cee89b6b25e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SoundPuzzle
@@ -1804,4 +1804,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SpellTest.unity
-  playerPath: C:/Users/Skeet/Desktop/Allegiant3Builds/Allegiant3_Spells_v73.exe
+  playerPath: C:/Users/Skeet/Desktop/Allegiant3Builds/Allegiant3_Spells_v75.exe

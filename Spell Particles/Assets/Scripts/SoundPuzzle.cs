@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundPuzzle : MonoBehaviour {
+public class SoundPuzzle : MonoBehaviour
+{
     public delegate void CALLBACK();
     public CALLBACK OnPuzzleComplete = delegate () { };
     public CALLBACK OnWellNoteScanned = delegate () { };
@@ -23,6 +24,7 @@ public class SoundPuzzle : MonoBehaviour {
     public AudioClip WellSensorSound;
     public AudioClip IncorrectNoteSound;
 
+    public float cooldownBetweenUserInputedNotes = 0.9f;
     public float TimeBetweenNotes = 0.5f;
     public int howManyInstancesOfTheNoteToPlayAtOnce = 1;
 
@@ -35,57 +37,79 @@ public class SoundPuzzle : MonoBehaviour {
 
 
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         ClampSequence();
-        OnWellNoteScanned = () => {
-            if (gameStarted && !gameFinished) {
+        OnWellNoteScanned = () =>
+        {
+            if (gameStarted && !gameFinished)
+            {
                 RestartSequence();
                 StartCoroutine(PlaySampleSongCoroutine());
             }
         };
     }
 
-    void BeginPuzzle() {
-        if (!gameStarted) {
+    void BeginPuzzle()
+    {
+        if (!gameStarted)
+        {
             gameStarted = true;
             Audio.PlaySFX(WellSensorSound);
             UDP.Write(UDP_ToSend_CompleteWell);
-            this.ActionAfterSecondDelay(1f, () => {
+            this.ActionAfterSecondDelay(1f, () =>
+            {
                 RestartSequence();
                 StartCoroutine(PlaySampleSongCoroutine());
             });
         }
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.P)) {
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
             BeginPuzzle();
         }
     }
 
-    void GenerateRandomSequence() {
+    void GenerateRandomSequence()
+    {
         correctNoteSequence = new int[8];
-        for (int i = 0; i < correctNoteSequence.Length; i++) {
+        for (int i = 0; i < correctNoteSequence.Length; i++)
+        {
             correctNoteSequence[i] = Random.Range(0, Notes.Length);
         }
     }
 
 
-    void ClampSequence() {
-        for (int i = 0; i < correctNoteSequence.Length; i++) {
+    void ClampSequence()
+    {
+        for (int i = 0; i < correctNoteSequence.Length; i++)
+        {
             correctNoteSequence[i] = Mathf.Clamp(correctNoteSequence[i], 0, Notes.Length - 1);
         }
     }
 
-    void RestartSequence() {
+    void RestartSequence()
+    {
         sequenceIndex = 0;
     }
 
-    void PlayNote(int index) {
+    float lastTimeUserInputNoteWasPressed = 0;
+    void PlayNote(int index, bool isUserInput = false)
+    {
         if (!canPlayNotes)
             return;
 
-        if (index >= 0 && index < Notes.Length) {
+        if (index >= 0 && index < Notes.Length)
+        {
+            if (isUserInput)
+            {
+                float timePassedSinceLAstNotePlayedByUser = Time.time - lastTimeUserInputNoteWasPressed;
+                if (timePassedSinceLAstNotePlayedByUser < cooldownBetweenUserInputedNotes) { return; }
+                else { lastTimeUserInputNoteWasPressed = Time.time; }
+            }
             PlayNoteAudioClip(index);
         }
 
@@ -93,13 +117,16 @@ public class SoundPuzzle : MonoBehaviour {
             return;
 
 
-        if (index == correctNoteSequence[sequenceIndex]) {
+        if (index == correctNoteSequence[sequenceIndex])
+        {
             sequenceIndex++;
             if (sequenceIndex >= correctNoteSequence.Length)
             {
                 Win();
             }
-        } else {
+        }
+        else
+        {
             StartCoroutine(IncorrectNoteCoroutine());
         }
     }
@@ -116,7 +143,8 @@ public class SoundPuzzle : MonoBehaviour {
         OnPuzzleComplete();
     }
 
-    IEnumerator IncorrectNoteCoroutine() {
+    IEnumerator IncorrectNoteCoroutine()
+    {
         canPlayNotes = false;
         RestartSequence();
         Audio.PlaySFX(IncorrectNoteSound);
@@ -126,21 +154,26 @@ public class SoundPuzzle : MonoBehaviour {
         //StartCoroutine(PlaySampleSongCoroutine()); // commented so no sequence repeated on fail. only the well shows you the sequence
     }
 
-    void PlayNoteAudioClip(int index) {
-        if (index >= 0 && index < Notes.Length) {
+    void PlayNoteAudioClip(int index)
+    {
+        if (index >= 0 && index < Notes.Length)
+        {
             howManyInstancesOfTheNoteToPlayAtOnce = Mathf.Clamp(howManyInstancesOfTheNoteToPlayAtOnce, 1, int.MaxValue);
             for (int i = 0; i < howManyInstancesOfTheNoteToPlayAtOnce; i++) { Audio.PlaySFX(Notes[index], howManyInstancesOfTheNoteToPlayAtOnce == 1); }
         }
     }
 
     bool playingSampleSong = false;
-    IEnumerator PlaySampleSongCoroutine() {
-        if (!playingSampleSong) {
+    IEnumerator PlaySampleSongCoroutine()
+    {
+        if (!playingSampleSong)
+        {
             playingSampleSong = true;
             canPlayNotes = false;
             yield return new WaitForSeconds(1.5f);
             int n = 0;
-            while (n < correctNoteSequence.Length) {
+            while (n < correctNoteSequence.Length)
+            {
                 PlayNoteAudioClip(correctNoteSequence[n]);
                 n++;
                 yield return new WaitForSeconds(TimeBetweenNotes);
@@ -151,24 +184,31 @@ public class SoundPuzzle : MonoBehaviour {
         }
     }
 
-    int NumberOfStartNotesAlreadyTrue() {
+    int NumberOfStartNotesAlreadyTrue()
+    {
         int count = 0;
-        for (int i = 0; i < UDP_ToReceive_StartSoundPuzzle.Length; i++) {
+        for (int i = 0; i < UDP_ToReceive_StartSoundPuzzle.Length; i++)
+        {
             if (startPuzzleRequiredNotes[i]) count++;
         }
 
         return count;
     }
 
-    public void UDP_MessageReceived(string command) {
-        if (command != null && command.Length > 0) {
+    public void UDP_MessageReceived(string command)
+    {
+        if (command != null && command.Length > 0)
+        {
 
-            if (UDP_ToReceive_StartSoundPuzzle != null && UDP_ToReceive_StartSoundPuzzle.Length > 0) {
+            if (UDP_ToReceive_StartSoundPuzzle != null && UDP_ToReceive_StartSoundPuzzle.Length > 0)
+            {
                 startPuzzleRequiredNotes = startPuzzleRequiredNotes ?? new bool[UDP_ToReceive_StartSoundPuzzle.Length];
 
-                for (int i = 0; i < UDP_ToReceive_StartSoundPuzzle.Length; i++) {
-                    if (UDP_ToReceive_StartSoundPuzzle[i] != null && command.ToUpper() == UDP_ToReceive_StartSoundPuzzle[i].ToUpper()) {
-                        startPuzzleRequiredNotes[i] = true;                        
+                for (int i = 0; i < UDP_ToReceive_StartSoundPuzzle.Length; i++)
+                {
+                    if (UDP_ToReceive_StartSoundPuzzle[i] != null && command.ToUpper() == UDP_ToReceive_StartSoundPuzzle[i].ToUpper())
+                    {
+                        startPuzzleRequiredNotes[i] = true;
                         OnWellNoteScanned();
                     }
                 }
@@ -176,7 +216,8 @@ public class SoundPuzzle : MonoBehaviour {
 
                 if (NumberOfStartNotesAlreadyTrue() > 0 && !gameStarted) { Audio.PlaySFX(ActivationNotes[NumberOfStartNotesAlreadyTrue() - 1]); }
                 bool allTrue = NumberOfStartNotesAlreadyTrue() == startPuzzleRequiredNotes.Length;
-                if (!gameStarted && allTrue) {
+                if (!gameStarted && allTrue)
+                {
                     BeginPuzzle();
                 }
 
@@ -188,12 +229,14 @@ public class SoundPuzzle : MonoBehaviour {
             }
 
             bool matchesNoteScan = command.Length >= UDP_ToReceive_NoteScan.Length && command.Substring(0, UDP_ToReceive_NoteScan.Length).ToUpper() == UDP_ToReceive_NoteScan.ToUpper();
-            if (matchesNoteScan) {
+            if (matchesNoteScan)
+            {
                 string toParse = command.Substring(UDP_ToReceive_NoteScan.Length);
                 string[] pieces = toParse.Split('_');
                 int n;
-                if (int.TryParse(pieces[0], out n) && --n >= 0) {
-                    PlayNote(n);
+                if (int.TryParse(pieces[0], out n) && --n >= 0)
+                {
+                    PlayNote(n, true);
                 }
             }
         }
