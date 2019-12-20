@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Audio.cs" />
+    <Compile Include="Assets\Scripts\AudioHintsUDP.cs" />
     <Compile Include="Assets\Scripts\GAME.cs" />
     <Compile Include="Assets\Scripts\Helpers\FlickerFire.cs" />
     <Compile Include="Assets\Scripts\Helpers\MoveWithinBounds.cs" />

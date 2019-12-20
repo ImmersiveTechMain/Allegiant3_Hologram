@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Audio
+    - AudioHintsUDP
     - FireballSpawner
     - FlickerFire
     - GAME
@@ -341,7 +342,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13658}
     - Class: 114
-      Script: {instanceID: 32412}
+      Script: {instanceID: 32422}
+    - Class: 114
+      Script: {instanceID: 36114}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -1801,7 +1804,13 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 30720bcaf49ea5f19626e5adbcc5d957
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AudioHintsUDP
   platform: 19
   scenePathNames:
   - Assets/Scenes/SpellTest.unity
-  playerPath: C:/Users/Skeet/Desktop/Allegiant3Builds/Allegiant3_Spells_v75.exe
+  playerPath: C:/Users/Skeet/Desktop/Allegiant3Builds/Allegiant3_Spells_v80.exe

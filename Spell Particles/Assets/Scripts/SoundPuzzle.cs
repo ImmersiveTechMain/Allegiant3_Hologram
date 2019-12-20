@@ -96,7 +96,7 @@ public class SoundPuzzle : MonoBehaviour
         sequenceIndex = 0;
     }
 
-    float lastTimeUserInputNoteWasPressed = 0;
+    float[] lastTimeUserInputNoteWasPressed = null;
     void PlayNote(int index, bool isUserInput = false)
     {
         if (!canPlayNotes)
@@ -106,9 +106,10 @@ public class SoundPuzzle : MonoBehaviour
         {
             if (isUserInput)
             {
-                float timePassedSinceLAstNotePlayedByUser = Time.time - lastTimeUserInputNoteWasPressed;
+                lastTimeUserInputNoteWasPressed = lastTimeUserInputNoteWasPressed ?? new float[Notes.Length]; 
+                float timePassedSinceLAstNotePlayedByUser = Time.time - lastTimeUserInputNoteWasPressed[index];
                 if (timePassedSinceLAstNotePlayedByUser < cooldownBetweenUserInputedNotes) { return; }
-                else { lastTimeUserInputNoteWasPressed = Time.time; }
+                else { lastTimeUserInputNoteWasPressed[index] = Time.time; }
             }
             PlayNoteAudioClip(index);
         }
@@ -214,7 +215,7 @@ public class SoundPuzzle : MonoBehaviour
                 }
 
 
-                if (NumberOfStartNotesAlreadyTrue() > 0 && !gameStarted) { Audio.PlaySFX(ActivationNotes[NumberOfStartNotesAlreadyTrue() - 1]); }
+                if (NumberOfStartNotesAlreadyTrue() > 0 && !gameStarted) { for (int i = 0; i < howManyInstancesOfTheNoteToPlayAtOnce; i++) { Audio.PlaySFX(ActivationNotes[NumberOfStartNotesAlreadyTrue() - 1], howManyInstancesOfTheNoteToPlayAtOnce == 1); } }
                 bool allTrue = NumberOfStartNotesAlreadyTrue() == startPuzzleRequiredNotes.Length;
                 if (!gameStarted && allTrue)
                 {

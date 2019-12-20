@@ -58241,6 +58241,83 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsTemporary: 0
+--- !u!1 &853770022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 853770023}
+  - component: {fileID: 853770024}
+  m_Layer: 0
+  m_Name: AudioHints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &853770023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853770022}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1108.2914, y: 416.43176, z: -616.24054}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2010853964}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &853770024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853770022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fca312926df6c4eb1cd585eb6d559d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UDP_ToReceive_PlayHint: HINT_A1_
+  startingCountFrom1: 1
+  audioHints:
+  - {fileID: 8300000, guid: e2fb535b33f4ef348ba2e54cc1a18fb4, type: 3}
+  - {fileID: 8300000, guid: 97b614e9ef6070040bf1344ce6b0546e, type: 3}
+  - {fileID: 8300000, guid: 1648fdc1f53d1124688faff805f33b5e, type: 3}
+  - {fileID: 8300000, guid: f0320c2c8fd41da448a20cbae1eaa172, type: 3}
+  - {fileID: 8300000, guid: b18646e1467e981428bc66dbe8c15c57, type: 3}
+  - {fileID: 8300000, guid: 230da182189e370499b40a7c1ce4ef7e, type: 3}
+  - {fileID: 8300000, guid: 8e31f319af27b6a47b3ef19195a8d398, type: 3}
+  - {fileID: 8300000, guid: d55e6acc61f08e54292944d391ac9cac, type: 3}
+  - {fileID: 8300000, guid: fdfce72e6a054ac41b0da63f4b10ce8a, type: 3}
+  - {fileID: 8300000, guid: 1d9767ff2e729e64a8af015c763a0015, type: 3}
+  - {fileID: 8300000, guid: 9a4e13ba29624764d897b61c5466621a, type: 3}
+  - {fileID: 8300000, guid: 6b5b65e457226a7488c5a82b1b00693f, type: 3}
+  - {fileID: 8300000, guid: 30e2dc1064c2c5a4996fc7cc84dfee06, type: 3}
+  - {fileID: 8300000, guid: 867c2508eb46d8c4db5dd2f5a5cc176a, type: 3}
+  - {fileID: 8300000, guid: c1d7a232e481a944e895885e3c326f15, type: 3}
+  - {fileID: 8300000, guid: 565bba3512b25ef409352d5edcfa968e, type: 3}
+  - {fileID: 8300000, guid: ab9bc2505e1f5db47b49bae529c89851, type: 3}
+  - {fileID: 8300000, guid: 8b353d6be6a2dc14ba6c3c869b8e653c, type: 3}
+  - {fileID: 8300000, guid: 6f8c49c87c404ec4aacd9517dd0d19c0, type: 3}
+  - {fileID: 8300000, guid: 09823e6bee6edd1468f60f8bdea63238, type: 3}
+  - {fileID: 8300000, guid: 259e21fbeddeb8440849f4a747022239, type: 3}
+  - {fileID: 8300000, guid: 4f87afd88c11ec240ae6e9f253c1495c, type: 3}
+  - {fileID: 8300000, guid: 85bf665b8e06f7743b037e6bafce2c8a, type: 3}
+  - {fileID: 8300000, guid: b61f24cc2972ad344ab718b674756e5b, type: 3}
+  - {fileID: 8300000, guid: 5ef569efc88f2574f971f9d012725e0f, type: 3}
+  - {fileID: 8300000, guid: 4d12624dcd1a3af43bbe8c9186fe875d, type: 3}
+  - {fileID: 8300000, guid: 8c2433fb75c0d7748941d7b02a5dbd22, type: 3}
+  - {fileID: 8300000, guid: 9f2aebae1e967bb4ba93aba3ff414eed, type: 3}
+  - {fileID: 8300000, guid: 868ef72b14ee1e54789e7f8e8acfd3e6, type: 3}
+  - {fileID: 8300000, guid: 000470206fb4b6d4887657b4f3f4de8a, type: 3}
+  - {fileID: 8300000, guid: 61f5106a10f0e5846a2c7385201eac41, type: 3}
 --- !u!1 &854008425
 GameObject:
   m_ObjectHideFlags: 0
@@ -125330,7 +125407,7 @@ MonoBehaviour:
   IncorrectNoteSound: {fileID: 8300000, guid: 552df6679e82e854fb1b28a69b4eb813, type: 3}
   cooldownBetweenUserInputedNotes: 1.2
   TimeBetweenNotes: 0.9
-  howManyInstancesOfTheNoteToPlayAtOnce: 1
+  howManyInstancesOfTheNoteToPlayAtOnce: 2
   correctNoteSequence: 0100000004000000050000000600000008000000
 --- !u!4 &1756665110
 Transform:
@@ -137446,7 +137523,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 853770023}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
