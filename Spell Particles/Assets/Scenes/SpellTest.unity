@@ -41686,7 +41686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921ab6b8b7683e64aa5141124e8c6474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerDuration: 1800
+  timerDuration: 2100
   spellGameflow: {fileID: 1368614212}
   potionMixerGameflow: {fileID: 1834560203}
   MUSIC_GameMusic: {fileID: 8300000, guid: d3c615794a991ce46b02d2399a8f68e3, type: 3}

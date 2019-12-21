@@ -16,6 +16,7 @@ ScriptsOnlyBuild:
     - MultiDisplaySetup
     - PotionMixer
     - PotionMixer_Scene.Gameflow
+    - Readme
     - Rotate
     - ScrollUV
     - SoundPuzzle
@@ -344,7 +345,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13660}
     - Class: 114
-      Script: {instanceID: 50644}
+      Script: {instanceID: 50836}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -1813,4 +1814,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SpellTest.unity
-  playerPath: C:/Users/ZMyers/Documents/UnityProjects/A3/Development Builds/Dec20_Spells_v82/Allegiant3_Spells_v82.exe
+  playerPath: C:/Users/Skeet/Desktop/Allegiant3Builds/Allegiant3_Spells_v85.exe
