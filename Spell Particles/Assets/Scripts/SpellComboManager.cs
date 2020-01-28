@@ -43,10 +43,10 @@ public class SpellComboManager : MonoBehaviour
     [SerializeField] private SpellParticleSystem Tornado;
 
     [Header("Combo Spells")]
-    [SerializeField] private SpellParticleSystem LightningFireball;
+    //[SerializeField] private SpellParticleSystem LightningFireball;
     [SerializeField] private SpellParticleSystem FireTornado;
-    [SerializeField] private SpellParticleSystem LightningTornado;
-    [SerializeField] private SpellParticleSystem FireLightningTornado;
+    //[SerializeField] private SpellParticleSystem LightningTornado;
+    //[SerializeField] private SpellParticleSystem FireLightningTornado;
 
     [Header("Other Spells")]
     [SerializeField] private SpellParticleSystem Cyclone;
@@ -75,7 +75,7 @@ public class SpellComboManager : MonoBehaviour
             }
         }
 
-        FireLightningTornado.OnEnabled = CompleteFinalSpell;
+        FireTornado.OnEnabled = CompleteFinalSpell;
         Cyclone.OnEnabled = AttemptCompleteCyclonePuzzle;
     }
 
@@ -127,17 +127,17 @@ public class SpellComboManager : MonoBehaviour
         if (spell.SpellScanOnCooldown)
             return;
 
-        if (spell == Fireball && (FireTornado.SystemsAreEnabled || LightningFireball.SystemsAreEnabled))
+        if (spell == Fireball && (FireTornado.SystemsAreEnabled))// || LightningFireball.SystemsAreEnabled))
             return;
-        if (spell == Lightningball && (LightningTornado.SystemsAreEnabled || LightningFireball.SystemsAreEnabled))
-            return;
-        if (spell == Tornado && (FireTornado.SystemsAreEnabled || LightningTornado.SystemsAreEnabled))
+        //if (spell == Lightningball && (LightningTornado.SystemsAreEnabled || LightningFireball.SystemsAreEnabled))
+        //    return;
+        if (spell == Tornado && (FireTornado.SystemsAreEnabled))// || LightningTornado.SystemsAreEnabled))
             return;
 
         if (spell.SpellShape == SpellShape.Ball)
         {
-            if (LightningFireball.SystemsAreEnabled)
-                return;
+            //if (LightningFireball.SystemsAreEnabled)
+            //    return;
             spell.transform.position = (ballsActive == 1 && !spell.SystemsAreEnabled ? PrimaryProjectilePosition + SecondaryProjectileOffset : PrimaryProjectilePosition);
         }
         spell.EnableSystems(!spell.SystemsAreEnabled);
@@ -160,14 +160,14 @@ public class SpellComboManager : MonoBehaviour
     {
         get
         {
-            return SumBools(Fireball.SystemsAreEnabled, Lightningball.SystemsAreEnabled, LightningFireball.SystemsAreEnabled);
+            return SumBools(Fireball.SystemsAreEnabled, Lightningball.SystemsAreEnabled);//, LightningFireball.SystemsAreEnabled);
         }
     }
     private int tornadosActive
     {
         get
         {
-            return SumBools(Tornado.SystemsAreEnabled, FireTornado.SystemsAreEnabled, LightningTornado.SystemsAreEnabled);
+            return SumBools(Tornado.SystemsAreEnabled, FireTornado.SystemsAreEnabled);//, LightningTornado.SystemsAreEnabled);
         }
     }
 
@@ -185,38 +185,38 @@ public class SpellComboManager : MonoBehaviour
     {
         if (!FinalComboSpellIsFormed())
         {
-            if (Fireball.SystemsAreEnabled && Lightningball.SystemsAreEnabled)
-            {
-                Fireball.canBeDisabled = Lightningball.canBeDisabled = false;
-                //Merge to combo ball
-                SpellParticleSystem mixedSpellToActivate = GetMixedParticleSystem();
-                if (mixedSpellToActivate != null)
-                {
-                    yield return new WaitForSeconds(1.5f);
-                    ThrowProjectileAtPosition(Fireball, PrimaryProjectilePosition, ProjectileThrowDuration);
-                    ThrowProjectileAtPosition(Lightningball, PrimaryProjectilePosition, ProjectileThrowDuration);
-                    Audio.PlaySFX(SFX_ThrowProjectile);
-                    yield return new WaitForSeconds(ProjectileThrowDuration);
-                    Audio.PlaySFX(SFX_SpellCombined);
-                    Audio.PlaySFX(SFX_ProjectileImpact);
-                    DisableAllSpellsExcept(mixedSpellToActivate);
-                    mixedSpellToActivate.transform.position = PrimaryProjectilePosition;
-                    mixedSpellToActivate.EnableSystems(true);
-                }
-            }
+            //if (Fireball.SystemsAreEnabled && Lightningball.SystemsAreEnabled)
+            //{
+            //    Fireball.canBeDisabled = Lightningball.canBeDisabled = false;
+            //    //Merge to combo ball
+            //    SpellParticleSystem mixedSpellToActivate = GetMixedParticleSystem();
+            //    if (mixedSpellToActivate != null)
+            //    {
+            //        yield return new WaitForSeconds(1.5f);
+            //        ThrowProjectileAtPosition(Fireball, PrimaryProjectilePosition, ProjectileThrowDuration);
+            //        ThrowProjectileAtPosition(Lightningball, PrimaryProjectilePosition, ProjectileThrowDuration);
+            //        Audio.PlaySFX(SFX_ThrowProjectile);
+            //        yield return new WaitForSeconds(ProjectileThrowDuration);
+            //        Audio.PlaySFX(SFX_SpellCombined);
+            //        Audio.PlaySFX(SFX_ProjectileImpact);
+            //        DisableAllSpellsExcept(mixedSpellToActivate);
+            //        mixedSpellToActivate.transform.position = PrimaryProjectilePosition;
+            //        mixedSpellToActivate.EnableSystems(true);
+            //    }
+            //}
 
             yield return null;
-            if (tornadosActive >= 1 && ballsActive >= 1)
+            if (Tornado.SystemsAreEnabled && Fireball.SystemsAreEnabled)
             {
-                GetActiveTornadoSpell().canBeDisabled = false;
-                GetActiveBallSpell().canBeDisabled = false;
+                Tornado.canBeDisabled = false;
+                Fireball.canBeDisabled = false;
                 yield return new WaitForSeconds(1.5f);
                 //move ball to secondary position
-                ThrowProjectileAtPosition(GetActiveBallSpell(), PrimaryProjectilePosition + SecondaryProjectileOffset, ProjectileThrowDuration, false);
+                ThrowProjectileAtPosition(Fireball, PrimaryProjectilePosition + SecondaryProjectileOffset, ProjectileThrowDuration, false);
                 yield return new WaitForSeconds(ProjectileThrowDuration);
                 yield return new WaitForSeconds(0.5f);
                 //throw ball at tornado base
-                SpellParticleSystem mixedSpellToActivate = GetMixedParticleSystem();
+                SpellParticleSystem mixedSpellToActivate = FireTornado;
                 mixedSpellToActivate.canBeDisabled = false;
                 ThrowProjectileAtPosition(GetActiveBallSpell(), Vector3.zero, ProjectileThrowDuration);
                 Audio.PlaySFX(SFX_ThrowProjectile);
@@ -234,10 +234,10 @@ public class SpellComboManager : MonoBehaviour
 
     SpellParticleSystem GetMixedParticleSystem()
     {
-        if (Fireball.SystemsAreEnabled && Lightningball.SystemsAreEnabled)
-        {
-            return LightningFireball;
-        }
+        //if (Fireball.SystemsAreEnabled && Lightningball.SystemsAreEnabled)
+        //{
+        //    return LightningFireball;
+        //}
 
         if (GetActiveTornadoSpell() == Tornado)
         {
@@ -245,23 +245,23 @@ public class SpellComboManager : MonoBehaviour
             {
                 return FireTornado;
             }
-            else if (GetActiveBallSpell() == Lightningball)
-            {
-                return LightningTornado;
-            }
-            else if (GetActiveBallSpell() == LightningFireball)
-            {
-                return FireLightningTornado;
-            }
+            //else if (GetActiveBallSpell() == Lightningball)
+            //{
+            //    return LightningTornado;
+            //}
+            //else if (GetActiveBallSpell() == LightningFireball)
+            //{
+            //    return FireLightningTornado;
+            //}
         }
-        else if (GetActiveTornadoSpell() == FireTornado && GetActiveBallSpell() == Lightningball)
-        {
-            return FireLightningTornado;
-        }
-        else if (GetActiveTornadoSpell() == LightningTornado && GetActiveBallSpell() == Fireball)
-        {
-            return FireLightningTornado;
-        }
+        //else if (GetActiveTornadoSpell() == FireTornado && GetActiveBallSpell() == Lightningball)
+        //{
+        //    return FireLightningTornado;
+        //}
+        //else if (GetActiveTornadoSpell() == LightningTornado && GetActiveBallSpell() == Fireball)
+        //{
+        //    return FireLightningTornado;
+        //}
 
 
         return null;
@@ -280,17 +280,17 @@ public class SpellComboManager : MonoBehaviour
 
     SpellParticleSystem GetActiveBallSpell()
     {
-        return Fireball.SystemsAreEnabled ? Fireball : Lightningball.SystemsAreEnabled ? Lightningball : LightningFireball.SystemsAreEnabled ? LightningFireball : null;
+        return Fireball.SystemsAreEnabled ? Fireball : Lightningball.SystemsAreEnabled ? Lightningball : null;// : LightningFireball.SystemsAreEnabled ? LightningFireball : null;
     }
 
     SpellParticleSystem GetActiveTornadoSpell()
     {
-        return Tornado.SystemsAreEnabled ? Tornado : LightningTornado.SystemsAreEnabled ? LightningTornado : FireTornado.SystemsAreEnabled ? FireTornado : FireLightningTornado.SystemsAreEnabled ? FireLightningTornado : null;
+        return Tornado.SystemsAreEnabled ? Tornado : FireTornado.SystemsAreEnabled ? FireTornado : null;// FireLightningTornado.SystemsAreEnabled ? FireLightningTornado : LightningTornado.SystemsAreEnabled ? LightningTornado : null;
     }
 
     bool FinalComboSpellIsFormed()
     {
-        return FireLightningTornado.SystemsAreEnabled;
+        return FireTornado.SystemsAreEnabled;
     }
 
 
@@ -353,7 +353,7 @@ public class SpellComboManager : MonoBehaviour
     bool SuperCycloneHasBeenCompleted = false;
     public void AllowCycloneAsFinalSpell()
     {
-        FireLightningTornado.EnableSystems(false, false);
+        FireTornado.EnableSystems(false, false);
         Audio.PlaySFX(SFX_WinSpellPuzzle);
         Cyclone.SpellScanOnCooldown = false;
         CanCompleteSuperCyclone = true;

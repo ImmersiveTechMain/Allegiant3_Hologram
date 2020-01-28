@@ -82192,10 +82192,7 @@ MonoBehaviour:
   Fireball: {fileID: 1267179453}
   Lightningball: {fileID: 897079216}
   Tornado: {fileID: 1701891810}
-  LightningFireball: {fileID: 2137495615}
   FireTornado: {fileID: 660161941}
-  LightningTornado: {fileID: 809600365}
-  FireLightningTornado: {fileID: 797112224}
   Cyclone: {fileID: 576993983}
   Snowstorm: {fileID: 492941049}
   Confetti: {fileID: 1153384710}
@@ -125395,20 +125392,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7899c1ef705d14d1ea86b890e1710ec4, type: 3}
   - {fileID: 8300000, guid: 94ef9952a4220419ab3ba955f54ab454, type: 3}
   Notes:
-  - {fileID: 8300000, guid: 092694140de001c4f809f7385fe8338d, type: 3}
-  - {fileID: 8300000, guid: 357c64915b2b06e48bd71021f9e39114, type: 3}
-  - {fileID: 8300000, guid: 062fa43160515ab4ca5c17671fe5b391, type: 3}
-  - {fileID: 8300000, guid: bbc98954d7a3b8340b4b56e07f90fc6e, type: 3}
-  - {fileID: 8300000, guid: 0d90c0b2a5a16ae4eb0b47caefc30b62, type: 3}
-  - {fileID: 8300000, guid: 8a85e74d11898f640bfe00689b8f56e5, type: 3}
-  - {fileID: 8300000, guid: 9bd38286225e2fc4d95197ed02db14b4, type: 3}
-  - {fileID: 8300000, guid: b345e954afcb9864aaede2d2e5bba711, type: 3}
+  - {fileID: 8300000, guid: a37fcf205ad3544839c642f12e15298f, type: 3}
+  - {fileID: 8300000, guid: 5259861d271dd4971a88bb50dd971f39, type: 3}
+  - {fileID: 8300000, guid: 0ca5515eeadf9457e8455e3155f0b1ce, type: 3}
+  - {fileID: 8300000, guid: 6cf3898ff30ad43a0b328dc909590cb2, type: 3}
   WellSensorSound: {fileID: 8300000, guid: 135993b6472365242b1f969882255067, type: 3}
   IncorrectNoteSound: {fileID: 8300000, guid: 552df6679e82e854fb1b28a69b4eb813, type: 3}
   cooldownBetweenUserInputedNotes: 1.2
-  TimeBetweenNotes: 0.9
+  TimeBetweenNotes: 0.75
   howManyInstancesOfTheNoteToPlayAtOnce: 2
-  correctNoteSequence: 0100000004000000050000000600000008000000
+  correctNoteSequence: 02000000030000000100000004000000
 --- !u!4 &1756665110
 Transform:
   m_ObjectHideFlags: 0
@@ -128888,7 +128881,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1834560203
 MonoBehaviour:
   m_ObjectHideFlags: 0

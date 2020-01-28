@@ -78,7 +78,7 @@ public class SoundPuzzle : MonoBehaviour
         correctNoteSequence = new int[8];
         for (int i = 0; i < correctNoteSequence.Length; i++)
         {
-            correctNoteSequence[i] = Random.Range(0, Notes.Length);
+            correctNoteSequence[i] = Random.Range(0, Notes.Length + 1);
         }
     }
 
@@ -87,7 +87,7 @@ public class SoundPuzzle : MonoBehaviour
     {
         for (int i = 0; i < correctNoteSequence.Length; i++)
         {
-            correctNoteSequence[i] = Mathf.Clamp(correctNoteSequence[i], 0, Notes.Length - 1);
+            correctNoteSequence[i] = Mathf.Clamp(correctNoteSequence[i], 0, Notes.Length);
         }
     }
 
@@ -118,7 +118,7 @@ public class SoundPuzzle : MonoBehaviour
             return;
 
 
-        if (index == correctNoteSequence[sequenceIndex])
+        if (index == correctNoteSequence[sequenceIndex] - 1)
         {
             sequenceIndex++;
             if (sequenceIndex >= correctNoteSequence.Length)
@@ -175,7 +175,7 @@ public class SoundPuzzle : MonoBehaviour
             int n = 0;
             while (n < correctNoteSequence.Length)
             {
-                PlayNoteAudioClip(correctNoteSequence[n]);
+                PlayNoteAudioClip(correctNoteSequence[n] - 1);
                 n++;
                 yield return new WaitForSeconds(TimeBetweenNotes);
             }
